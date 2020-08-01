@@ -2,6 +2,10 @@ package parcial_2_web.services;
 
 import parcial_2_web.entidades.Usuario;
 
+import java.util.ArrayList;
+import java.util.*;
+
+
 public class UsuarioServices extends GestionDb<Usuario>{
 
     private static UsuarioServices instancia;

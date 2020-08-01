@@ -7,6 +7,7 @@ import io.javalin.Javalin;
 import parcial_2_web.entidades.Usuario;
 import parcial_2_web.services.BootStrapServices;
 import parcial_2_web.services.UsuarioServices;
+import parcial_2_web.controladores.TemplateController;
 
 public class Main {
 
@@ -26,6 +27,8 @@ public class Main {
              config.addStaticFiles("/publico");
             // config.registerPlugin(new RouteOverviewPlugin("/rutas"));
         }).start();
-        
+
+        //Manejadores de rutas
+        new TemplateController(app).aplicarRutas();
     }
 }
