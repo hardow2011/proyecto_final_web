@@ -13,7 +13,9 @@
             <form enctype="application/x-www-form-urlencoded" method="post" action=${accion} >
                 <div class="form-group">
                     <label for="matriculaForm">ID</label>
+                    <!-- La variable visualizar aplica el formulario readonly.                -->
                     <input value="<#if producto??> ${producto.id} <#else></#if>" type="number" name="matricula" class="form-control" id="matriculaForm" aria-describedby="matriculaHelp">
+<#--                    <small id="matriculaHelp" class="form-text text-muted">Indicar el ID</small>-->
                 </div>
                 <div class="form-group">
                     <label for="nombreForm">Nombre Completo</label>
