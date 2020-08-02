@@ -56,9 +56,23 @@ public class FormularioController {
                     Map<String, Object> contexto = new HashMap<>();
                     contexto.put("titulo", "Formulario");
                     contexto.put("admin", true);
-                    contexto.put("accion", "formulario/crear");
+                    contexto.put("accion", "/formulario/crear");
                     contexto.put("user", ctx.sessionAttribute("user"));
                     ctx.render("/publico/templates/formulario.ftl", contexto);
+                });
+
+                post("/crear", ctx -> {
+                    String nonbreFormulario = ctx.formParam("nombre");
+                    Float latitud = Float.parseFloat(ctx.formParam("latitude"));
+                    Float longitud = Float.parseFloat(ctx.formParam("longitude"));
+                    String nivelEscolar = ctx.formParam("nivelEscolar");
+
+                    Registro registro = new Registro(nonbreFormulario, nivelEscolar, latitud, longitud);
+                    registro.setUsuario(ctx.sessionAttribute("user"));
+
+                    RegistroServices.getInstancia().crear(registro);
+
+                    ctx.redirect("/formulario");
                 });
 
 

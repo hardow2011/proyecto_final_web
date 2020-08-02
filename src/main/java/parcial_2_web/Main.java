@@ -11,6 +11,8 @@ import parcial_2_web.controladores.SesionController;
 import parcial_2_web.controladores.FormularioController;
 import parcial_2_web.controladores.UsuariosController;
 
+import io.javalin.core.util.RouteOverviewPlugin;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -27,7 +29,8 @@ public class Main {
             }
             // Si la carpeta /publico no tiene ningún archivo, el build de Gradle fallará.
              config.addStaticFiles("/publico");
-            // config.registerPlugin(new RouteOverviewPlugin("/rutas"));
+             config.registerPlugin(new RouteOverviewPlugin("/rutas")); //aplicando plugins de las rutas
+             config.enableCorsForAllOrigins();
         }).start();
 
         //Manejadores de rutas

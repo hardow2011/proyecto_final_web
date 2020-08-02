@@ -17,6 +17,10 @@ public class Registro {
     @ManyToOne
     private Usuario usuario;
 
+    public Registro() {
+        
+    }
+
     public Registro(String nombre, String nivelEscolar, float latitud, float longitud) {
         this.setNombre(nombre);
         this.setNivelEscolar(nivelEscolar);
