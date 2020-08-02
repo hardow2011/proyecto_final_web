@@ -29,8 +29,8 @@ public class Usuario implements Serializable {
         this.admin = false;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public int getId() {
+        return id;
     }
 
     public String getNombreUsuario() {

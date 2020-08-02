@@ -11,26 +11,36 @@
         </div>
         <!-- El endpoint que estará procesando el formulario será enviado por el controlador      -->
         <form enctype="application/x-www-form-urlencoded" method="post" action=${accion} >
+            <#if user??>
+                <div class="form-group">
+                    <label for="idInput">ID</label>
+                    <input readonly="true" value="${user.id}" type="text" name="idUsuario" id="idInput" class="form-control">
+                </div>
+            </#if>
             <div class="form-group">
-                <label for="matriculaForm">ID</label>
-                <!-- La variable visualizar aplica el formulario readonly.                -->
-                <input value="<#if producto??> ${producto.id} <#else></#if>" type="number" name="matricula" class="form-control" id="matriculaForm" aria-describedby="matriculaHelp">
-                <#--                    <small id="matriculaHelp" class="form-text text-muted">Indicar el ID</small>-->
+                <label for="nombreForm">Nombre de usuario</label>
+                <input value="<#if user??>${user.nombreUsuario}<#else></#if>" type="text"  name="nombre" class="form-control" id="nombreForm" required>
             </div>
             <div class="form-group">
-                <label for="nombreForm">Nombre Completo</label>
-                <input value="<#if producto??> ${producto.nombre} <#else></#if>" type="text"  name="nombre" class="form-control" id="nombreForm">
+                <label for="passwordInput">Contraseña</label>
+                <input type="password" value="<#if user??>${user.password}<#else></#if>" id="passwordInput" class="form-control" name="password" required/><br/>
             </div>
             <div class="form-group">
-                <label for="carreraForm">Password</label>
-                <input value="<#if producto??> ${producto.precio} <#else></#if>" type="text"  name="carrera" class="form-control" id="carreraForm">
-            </div>
-            <div class="form-group">
-                <label for="carreraForm">Rol</label>
-                <input value="<#if producto??> ${producto.precio} <#else></#if>" type="text"  name="carrera" class="form-control" id="carreraForm">
+                <#if user??>
+                    <#if user.admin>
+                        <input type="checkbox" id="esAdmin" name="esAdmin" checked>
+                        <label for="esAdmin">Es admin?</label><br>
+                    <#else>
+                        <input type="checkbox" id="esAdmin" name="esAdmin">
+                        <label for="esAdmin">Es admin?</label><br>
+                    </#if>
+                <#else>
+                    <input type="checkbox" id="esAdmin" name="esAdmin">
+                    <label for="esAdmin">Es admin?</label><br>
+                </#if>
             </div>
             <!-- Los botones para la creación del producto -->
-            <button type="submit" class="btn btn-primary">Anadir al Queue</button>
+            <button type="submit" class="btn btn-primary">Crear</button>
             <a href="/tarea2/" class="btn btn-primary">Cancelar</a>
         </form>
     </div>

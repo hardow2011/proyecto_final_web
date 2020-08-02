@@ -40,10 +40,10 @@
                         <a class="nav-link" href="/parcial2/listarf">LISTAR FORMULARIOS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/parcial2/listaru">LISTAR USUARIOS</a>
+                        <a class="nav-link" href="/usuarios/">LISTAR USUARIOS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/parcial2/crearusuario">CREAR USUARIO</a>
+                        <a class="nav-link" href="/usuarios/crear">CREAR USUARIO</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="logout">LOGOUT:</a>
