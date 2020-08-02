@@ -20,8 +20,14 @@
                     <input value="<#if producto??> ${producto.nombre} <#else></#if>" type="text"  name="nombre" class="form-control" id="nombreForm">
                 </div>
                 <div class="form-group">
-                    <label for="carreraForm">Nivel Escolar</label>
-                    <input value="<#if producto??> ${producto.precio} <#else></#if>" type="text"  name="carrera" class="form-control" id="carreraForm">
+                    <label for="inputNivelEscolar">Nivel escolar</label>
+                    <select class="form-control" id="inputNivelEscolar" name="nivelEscolar">
+                        <option>Básico</option>
+                        <option>Medio</option>
+                        <option>Grado Universitario</option>
+                        <option>Postgrado</option>
+                        <option>Doctorado</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="nombreForm">Registrado Por</label>
