@@ -41,7 +41,7 @@
             </div>
             <!-- Los botones para la creación del producto -->
             <button type="submit" class="btn btn-primary">Crear</button>
-            <a href="/tarea2/" class="btn btn-primary">Cancelar</a>
+            <a href="/usuarios" class="btn btn-primary">Cancelar</a>
         </form>
     </div>
 </#macro>

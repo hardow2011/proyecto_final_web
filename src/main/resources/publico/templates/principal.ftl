@@ -27,18 +27,18 @@
             <ul class="navbar-nav">
 
                 <li class="nav-item active">
-                    <a class="navbar-brand" href="/parcial2/">PARCIAL 2 </a>
+                    <a class="navbar-brand" href="#">PARCIAL 2 </a>
                 </li>
                 <#if user??>
                     <#if user.admin>
                         <li class="nav-item">
-                            <a class="nav-link" href="/parcial2/formulario">FORMULARIO</a>
+                            <a class="nav-link" href="/formulario">FORMULARIO</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/parcial2/queue">QUEUE</a>
+                            <a class="nav-link" href="#">QUEUE</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/parcial2/listarf">LISTAR FORMULARIOS</a>
+                            <a class="nav-link" href="#">LISTAR FORMULARIOS</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/usuarios/">LISTAR USUARIOS</a>
@@ -51,10 +51,10 @@
                         </li>
                     <#else>
                         <li class="nav-item">
-                            <a class="nav-link" href="/parcial2/formulario">FORMULARIO</a>
+                            <a class="nav-link" href="/formulario">FORMULARIO</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/parcial2/queue">QUEUE</a>
+                            <a class="nav-link" href="#">QUEUE</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/logout">LOGOUT: ${user.nombreUsuario}</a>

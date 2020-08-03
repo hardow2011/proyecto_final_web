@@ -66,7 +66,7 @@ public class UsuariosController extends BaseControlador {
                     contexto.put("titulo", "Crear Usuario");
                     contexto.put("admin", true);
                     contexto.put("accion", "/usuarios/crear");
-                    contexto.put("usuario", ctx.sessionAttribute("usuario"));
+                    contexto.put("user", ctx.sessionAttribute("user"));
                     ctx.render("/publico/templates/regusuarios.ftl", contexto);
                 });
 
