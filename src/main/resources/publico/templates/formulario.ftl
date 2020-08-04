@@ -4,6 +4,7 @@
     <title>${titulo}</title>
 </head>
 
+<html manifest="/sinconexion.appcache">
 <#macro page_body>
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 
@@ -17,14 +18,22 @@
     }
 
     function showPosition(position) {
-    document.getElementById("latitude").value = position.coords.latitude;
-    document.getElementById("longitude").value = position.coords.longitude;
-    $('#formFormulario').submit();
+    document.getElementById("inputLatitud").value = position.coords.latitude;
+    document.getElementById("inputLongitud").value = position.coords.longitude;
+    
+    var listaRegistrosLocales = JSON.parse(localStorage.getItem("listaRegistrosLocales") || "[]");
+    var registro = {nombre:document.getElementById("inputNombrePersona").value,nivelEscolar:document.getElementById("inputNivelEscolar").value,latitud:document.getElementById("inputLatitud").value,longitud:document.getElementById("inputLongitud").value,usuario:null};
+    listaRegistrosLocales.push(registro);
+
+    localStorage.setItem("listaRegistrosLocales", JSON.stringify(listaRegistrosLocales));
+    console.log(listaRegistrosLocales);
+
+    window.location.reload();
+
     }
 
     function beforeSubmit() {
     getLocation();
-    $('#formFormulario').submit();
     }
     </script>
     <div class="container">
@@ -33,11 +42,11 @@
         </div>
         <!-- El endpoint que estará procesando el formulario será enviado por el controlador      -->
         <form id="formFormulario" enctype="application/x-www-form-urlencoded" method="post" action=${accion}>
-            <input hidden="true" type="text" id="latitude" name="latitude">
-            <input hidden="true" type="text" id="longitude" name="longitude">
+            <input hidden="true" type="text" id="inputLatitud" name="latitud">
+            <input hidden="true" type="text" id="inputLongitud" name="longitud">
             <div class="form-group">
-                <label for="nombreForm">Nombre Completo</label>
-                <input value="<#if producto??> ${producto.nombre} <#else></#if>" type="text"  name="nombre" class="form-control" id="nombreForm">
+                <label for="inputNombrePersona">Nombre Completo</label>
+                <input type="text"  name="nombrePersona" class="form-control" id="inputNombrePersona">
             </div>
             <div class="form-group">
                 <label for="inputNivelEscolar">Nivel escolar</label>
@@ -50,8 +59,8 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="nombreForm">Registrado Por</label>
-                <input readonly="true" type="text"  name="nombreUsuario" value="${user.nombreUsuario}" class="form-control" id="nombreForm">
+                <label for="inputNombreUsuario">Registrado Por</label>
+                <input readonly="true" type="text"  name="nombreUsuario" value="${user.nombreUsuario}" class="form-control" id="inputNombreUsuario">
             </div>
             <!-- Los botones para la creación del producto -->
             <button type="button" onclick="beforeSubmit();" class="btn btn-primary">Anadir al Queue</button>
@@ -59,5 +68,6 @@
         </form>
     </div>
 </#macro>
+</html>
 
 <@display_page/>

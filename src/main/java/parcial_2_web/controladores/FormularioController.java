@@ -62,17 +62,22 @@ public class FormularioController {
                 });
 
                 post("/crear", ctx -> {
-                    String nonbreFormulario = ctx.formParam("nombre");
-                    Float latitud = Float.parseFloat(ctx.formParam("latitude"));
-                    Float longitud = Float.parseFloat(ctx.formParam("longitude"));
-                    String nivelEscolar = ctx.formParam("nivelEscolar");
+                    // String nonbreFormulario = ctx.formParam("nombrePersona");
+                    // float latitud = Float.parseFloat(ctx.formParam("latitud"));
+                    // float longitud = Float.parseFloat(ctx.formParam("longitud"));
+                    // String nivelEscolar = ctx.formParam("nivelEscolar");
 
-                    Registro registro = new Registro(nonbreFormulario, nivelEscolar, latitud, longitud);
-                    registro.setUsuario(ctx.sessionAttribute("user"));
+                    // Registro registro = new Registro(nonbreFormulario, nivelEscolar, latitud, longitud);
+                    // registro.setUsuario(ctx.sessionAttribute("user"));
 
-                    RegistroServices.getInstancia().crear(registro);
+                    // RegistroServices.getInstancia().crear(registro);
 
-                    ctx.redirect("/formulario");
+                    // ctx.redirect("/formulario");
+                });
+
+                get("/testlocalstorage", ctx -> {
+                    Map<String, Object> contexto = new HashMap<>();
+                    ctx.render("/publico/templates/testlocalstorage.ftl", contexto);
                 });
 
 
