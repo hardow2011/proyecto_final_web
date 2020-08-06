@@ -15,11 +15,12 @@
             {
                 var tr="<tr>";
                 var td1="<td>"+listaRegistrosLocales[i]["nombre"]+"</td>";
+                var td5="<td>"+listaRegistrosLocales[i]["nivelEscolar"]+"</td>";
                 var td2="<td>"+listaRegistrosLocales[i]["latitud"]+"</td>";
                 var td3="<td>"+listaRegistrosLocales[i]["longitud"]+"</td>";
-                var td4="<td><button onclick=\"eliminarindice("+i+")\";>Eliminar</button></td></tr>";
+                var td4="<td><button class=\"btn btn-danger\" onclick=\"eliminarindice("+i+")\";>Eliminar</button></td></tr>";
 
-            $("#mytable").append(tr+td1+td2+td3+td4); 
+            $("#mytable").append(tr+td1+td5+td2+td3+td4); 
 
             }
 
@@ -42,6 +43,7 @@
             <table id="mytable" class="table table-striped">
                 <tr>
                     <th>Nombre</th>
+                    <th>Nivel Escolar</th>
                     <th>Latitud</th> 
                     <th>Longitud</th>
                     <th></th>

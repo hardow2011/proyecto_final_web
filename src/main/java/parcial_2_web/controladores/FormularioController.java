@@ -84,7 +84,7 @@ public class FormularioController {
                     Map<String, Object> contexto = new HashMap<>();
                     contexto.put("admin", true);
                     contexto.put("user", ctx.sessionAttribute("user"));
-                    contexto.put("titulo", "listado de formularios");
+                    contexto.put("titulo", "Formularios en queue");
                     ctx.render("/publico/templates/listarformularios.ftl", contexto);
                 });
 
