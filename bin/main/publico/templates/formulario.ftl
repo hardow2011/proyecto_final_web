@@ -4,6 +4,7 @@
     <title>${titulo}</title>
 </head>
 
+<html manifest="/sinconexion.appcache">
 <#macro page_body>
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 
@@ -25,6 +26,7 @@
     listaRegistrosLocales.push(registro);
 
     localStorage.setItem("listaRegistrosLocales", JSON.stringify(listaRegistrosLocales));
+    console.log(listaRegistrosLocales);
 
     window.location.reload();
 
@@ -66,5 +68,6 @@
         </form>
     </div>
 </#macro>
+</html>
 
 <@display_page/>

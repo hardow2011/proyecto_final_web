@@ -1,38 +1,51 @@
 <#include "principal.ftl">
 <#macro page_body>
-    <br>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+    <script>
+
+        var listaRegistrosLocales = JSON.parse(localStorage.getItem("listaRegistrosLocales") || "[]");
+        console.log(listaRegistrosLocales);
+
+        $(document).ready(function(){
+
+            var tbl=$("<table/>").attr("id","mytable");
+            $("#div1").append(tbl);
+            for(var i=0;i<listaRegistrosLocales.length;i++)
+            {
+                var tr="<tr>";
+                var td1="<td>"+listaRegistrosLocales[i]["nombre"]+"</td>";
+                var td2="<td>"+listaRegistrosLocales[i]["latitud"]+"</td>";
+                var td3="<td>"+listaRegistrosLocales[i]["longitud"]+"</td>";
+                var td4="<td><button onclick=\"eliminarindice("+i+")\";>Eliminar</button></td></tr>";
+
+            $("#mytable").append(tr+td1+td2+td3+td4); 
+
+            }
+
+        });
+
+        function eliminarindice(i) {
+            listaRegistrosLocales.splice(i, 1);
+            localStorage.setItem("listaRegistrosLocales", JSON.stringify(listaRegistrosLocales));
+            window.location.reload();
+        }
+
+    </script>
     <div class="container">
         <div class="jumbotron">
             <h1 class="display-4">${titulo}</h1>
             <br>
 
-            <a href="/parcial2/crearusuario" class="btn btn-primary">Nuevo Formulario</a>
+            <a href="/formulario/crear" class="btn btn-primary">Nuevo Formulario</a>
             <br>
-            <table class="table table-striped">
-                <br>
-                <thead>
+            <table id="mytable" class="table table-striped">
                 <tr>
-                    <th scope="col" style="width:25%">#</th>
-                    <th scope="col" style="width:25%">Nombre</th>
-                    <th scope="col" style="width:25%">Nivel</th>
-                    <th scope="col" style="width:25%">Usuario</th>
-                    <th scope="col" style="width:25%">Acciones</th>
+                    <th>Nombre</th>
+                    <th>Latitud</th> 
+                    <th>Longitud</th>
+                    <th></th>
                 </tr>
-                </thead>
-                <tbody>
-                <#list lista as reg>
-                    <tr>
-                        <td>${reg.id}</td>
-                        <td>${reg.nombre}</td>
-                        <td>${reg.nivel}</td>
-                        <td>${reg.usuario}</td>
-                        <td>
-                            <a class="btn btn-secondary btn-sm" href="/parcial2/editar/${reg.id}">Editar</a>
-                            <a class="btn btn-danger btn-sm" href="/parcial2/eliminar/${reg.id}">Eliminar</a>
-                        </td>
-                    </tr>
-                </#list>
-                </tbody>
             </table>
         </div>
     </div>

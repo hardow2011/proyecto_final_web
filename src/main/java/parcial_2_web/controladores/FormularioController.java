@@ -80,6 +80,14 @@ public class FormularioController {
                     ctx.render("/publico/templates/testlocalstorage.ftl", contexto);
                 });
 
+                get("/queue", ctx -> {
+                    Map<String, Object> contexto = new HashMap<>();
+                    contexto.put("admin", true);
+                    contexto.put("user", ctx.sessionAttribute("user"));
+                    contexto.put("titulo", "listado de formularios");
+                    ctx.render("/publico/templates/listarformularios.ftl", contexto);
+                });
+
 
             });
         });

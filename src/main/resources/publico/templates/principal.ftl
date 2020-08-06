@@ -35,7 +35,7 @@
                             <a class="nav-link" href="/formulario">FORMULARIO</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">QUEUE</a>
+                            <a class="nav-link" href="/formulario/queue">QUEUE</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">LISTAR FORMULARIOS</a>
@@ -54,7 +54,7 @@
                             <a class="nav-link" href="/formulario">FORMULARIO</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">QUEUE</a>
+                            <a class="nav-link" href="/formulario/queue">QUEUE</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/logout">LOGOUT: ${user.nombreUsuario}</a>
