@@ -110,4 +110,15 @@ public class GestionDb<T> {
         }
     }
 
+    public List<T> ListadoCompleto() throws PersistenceException {
+        EntityManager em = getEntityManager();
+        try {
+            CriteriaQuery<T> criteriaQuery = em.getCriteriaBuilder().createQuery(claseEntidad);
+            criteriaQuery.select(criteriaQuery.from(claseEntidad));
+            return em.createQuery(criteriaQuery).getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
 }

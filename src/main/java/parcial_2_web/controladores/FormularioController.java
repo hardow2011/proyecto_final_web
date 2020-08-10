@@ -88,6 +88,19 @@ public class FormularioController {
                     ctx.render("/publico/templates/listarformularios.ftl", contexto);
                 });
 
+                path("/mapa", () -> {
+                    get(ctx -> {
+                        List<Registro> forms = RegistroServices.getInstancia().ListadoCompleto();
+                        Map<String, Object> contexto = new HashMap<>();
+                        contexto.put("title", "Listado Formularios Registrado Por el Usuario");
+                        contexto.put("admin", true);
+                        contexto.put("user", ctx.sessionAttribute("user"));
+                        contexto.put("formularios", forms);
+                        ctx.render("/publico/templates/mapa.ftl", contexto);
+                    });
+
+                });
+
 
             });
         });
