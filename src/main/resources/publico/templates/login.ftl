@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+
+<html lang="en" manifest="/templates/manifest.appcache">
 <#include "principal.ftl">
 <#macro page_body>
     <br>
@@ -25,4 +28,5 @@
         </div>
     </div>
 </#macro>
+</html>
 <@display_page/>

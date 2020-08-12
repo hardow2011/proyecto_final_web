@@ -1,13 +1,11 @@
-<#include "principal.ftl">
 <!DOCTYPE html>
+
+<html lang="en" manifest="/templates/manifest.appcache">
+<#include "principal.ftl">
 <head>
     <title>${titulo}</title>
 </head>
-
-<html manifest="/sinconexion.appcache">
 <#macro page_body>
-    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-
     <script>
     function getLocation() {
     if (navigator.geolocation) {

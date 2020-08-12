@@ -29,8 +29,8 @@ public class Main {
             }
             // Si la carpeta /publico no tiene ningún archivo, el build de Gradle fallará.
              config.addStaticFiles("/publico");
-             config.registerPlugin(new RouteOverviewPlugin("/rutas")); //aplicando plugins de las rutas
-             config.enableCorsForAllOrigins();
+            //  config.registerPlugin(new RouteOverviewPlugin("/rutas")); //aplicando plugins de las rutas
+            //  config.enableCorsForAllOrigins();
         }).start(9000);
 
         //Manejadores de rutas
