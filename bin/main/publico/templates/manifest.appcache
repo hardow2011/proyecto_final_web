@@ -1,0 +1,14 @@
+CACHE MANIFEST
+
+# v12 - Para obligar al cambio bueno mantener una versión.
+# Esto es un comentario.
+
+CACHE:
+../css/bootstrap.css
+../js/jquery-3.5.1.js
+../js/popper.min.js
+../js/bootstrap.min.js
+/formulario/queue
+formulario.ftl
+principal.ftl
+listarformularios.ftl
