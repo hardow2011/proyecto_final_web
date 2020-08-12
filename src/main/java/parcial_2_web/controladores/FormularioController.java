@@ -9,6 +9,10 @@ import parcial_2_web.entidades.Registro;
 import parcial_2_web.services.RegistroServices;
 import parcial_2_web.services.UsuarioServices;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.lang.reflect.Array;
 import java.math.BigDecimal;
 import java.util.*;
 
@@ -62,17 +66,19 @@ public class FormularioController {
                 });
 
                 post("/crear", ctx -> {
-                    // String nonbreFormulario = ctx.formParam("nombrePersona");
-                    // float latitud = Float.parseFloat(ctx.formParam("latitud"));
-                    // float longitud = Float.parseFloat(ctx.formParam("longitud"));
-                    // String nivelEscolar = ctx.formParam("nivelEscolar");
 
-                    // Registro registro = new Registro(nonbreFormulario, nivelEscolar, latitud, longitud);
-                    // registro.setUsuario(ctx.sessionAttribute("user"));
+                    ObjectMapper mapper = new ObjectMapper();
 
-                    // RegistroServices.getInstancia().crear(registro);
+                    String json = ctx.formParam("listaFormularios");
+                    List<Registro> registros = Arrays.asList(mapper.readValue(json, Registro[].class));
 
-                    // ctx.redirect("/formulario");
+                    System.out.println("\n\n\n");
+                    for (Registro registro: registros) {
+                        System.out.println(registro.getNombre() + " " + registro.getNivelEscolar() + " " + registro.getLatitud() + " " + registro.getLongitud());
+                        RegistroServices.getInstancia().crear(registro);
+                    }
+
+                    ctx.redirect("/formulario");
                 });
 
                 get("/testlocalstorage", ctx -> {
@@ -88,16 +94,15 @@ public class FormularioController {
                     ctx.render("/publico/templates/listarformularios.ftl", contexto);
                 });
 
-                path("/mapa", () -> {
-                    get(ctx -> {
-                        List<Registro> forms = RegistroServices.getInstancia().ListadoCompleto();
-                        Map<String, Object> contexto = new HashMap<>();
-                        contexto.put("title", "Listado Formularios Registrado Por el Usuario");
-                        contexto.put("admin", true);
-                        contexto.put("user", ctx.sessionAttribute("user"));
-                        contexto.put("formularios", forms);
-                        ctx.render("/publico/templates/mapa.ftl", contexto);
-                    });
+                get("/mapa", ctx -> {
+
+                    List<Registro> forms = RegistroServices.getInstancia().listar();
+                    Map<String, Object> contexto = new HashMap<>();
+                    contexto.put("title", "Listado Formularios Registrados Por el Usuario");
+                    contexto.put("admin", true);
+                    contexto.put("user", ctx.sessionAttribute("user"));
+                    contexto.put("formularios", forms);
+                    ctx.render("/publico/templates/mapa.ftl", contexto);
 
                 });
 

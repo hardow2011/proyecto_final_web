@@ -38,7 +38,10 @@
                             <a class="nav-link" href="/formulario/queue">QUEUE</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">LISTAR FORMULARIOS</a>
+                            <a class="nav-link" href="/formulario/mapa">MAPA</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="formulario/listar">LISTAR FORMULARIOS</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/usuarios/">LISTAR USUARIOS</a>

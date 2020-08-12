@@ -32,6 +32,13 @@
             window.location.reload();
         }
 
+        function beforeSubmit() {
+            document.getElementById("inputListaFormularios").value = JSON.stringify(listaRegistrosLocales);
+            document.getElementById('formQueue').submit();
+            localStorage.removeItem("listaRegistrosLocales");
+
+        }
+
     </script>
     <div class="container">
         <div class="jumbotron">
@@ -49,6 +56,10 @@
                     <th></th>
                 </tr>
             </table>
+            <form id="formQueue" enctype="application/x-www-form-urlencoded" method="post" action="/formulario/crear" >
+                <input type="hidden" id="inputListaFormularios" name="listaFormularios"/>
+                <input type="hidden" value="12345" id="idInputPrueba" name="inputPrueba"/>
+            <button type="button" onclick="beforeSubmit();" class="btn btn-primary">Enviar formularios</button>
         </div>
     </div>
 </#macro>
