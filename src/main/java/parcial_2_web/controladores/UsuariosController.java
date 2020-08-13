@@ -55,7 +55,7 @@ public class UsuariosController extends BaseControlador {
                     Map<String, Object> contexto = new HashMap<>();
                     List<Usuario> lista = UsuarioServices.getInstancia().listar();
                     contexto.put("titulo", "Listado de Usuarios");
-                    contexto.put("admin", true);
+                    contexto.put("admin", ((Usuario) ctx.sessionAttribute("user")).getAdmin());
                     contexto.put("lista",lista);
                     contexto.put("user", ctx.sessionAttribute("user"));
                     ctx.render("/publico/templates/listarusuarios.ftl", contexto);
@@ -64,7 +64,7 @@ public class UsuariosController extends BaseControlador {
                 get("/crear", ctx -> {
                     Map<String, Object> contexto = new HashMap<>();
                     contexto.put("titulo", "Crear Usuario");
-                    contexto.put("admin", true);
+                    contexto.put("admin", ((Usuario) ctx.sessionAttribute("user")).getAdmin());
                     contexto.put("accion", "/usuarios/crear");
                     contexto.put("user", ctx.sessionAttribute("user"));
                     ctx.render("/publico/templates/regusuarios.ftl", contexto);
@@ -94,7 +94,7 @@ public class UsuariosController extends BaseControlador {
                     contexto.put("user", usuario);
 
                     contexto.put("titulo", "Editar usuario");
-                    contexto.put("admin", true);
+                    contexto.put("admin", ((Usuario) ctx.sessionAttribute("user")).getAdmin());
                     contexto.put("accion", "/usuarios/editar");
                     contexto.put("usuario", ctx.sessionAttribute("usuario"));
                     ctx.render("/publico/templates/regusuarios.ftl", contexto);

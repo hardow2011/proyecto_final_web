@@ -18,7 +18,10 @@
         <script src="../js/jquery-3.5.1.js"></script>
         <script src="../js/popper.min.js"></script>
         <script src="../js/bootstrap.min.js"></script>
-        <title>Plantilla Crud Tradicional</title>
+        <script
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmO0JHOHAXY2C3Ud49KbMSwFf3APep1Ow&callback=initMap&libraries=&v=weekly"
+                defer></script>
+        <title>Parcial 2</title>
         <@page_head/>
     </head>
     <body>

@@ -59,7 +59,7 @@ public class FormularioController {
                 get("/crear", ctx -> {
                     Map<String, Object> contexto = new HashMap<>();
                     contexto.put("titulo", "Formulario");
-                    contexto.put("admin", true);
+                    contexto.put("admin", ((Usuario) ctx.sessionAttribute("user")).getAdmin());
                     contexto.put("accion", "/formulario/crear");
                     contexto.put("user", ctx.sessionAttribute("user"));
                     ctx.render("/publico/templates/formulario.ftl", contexto);
@@ -88,7 +88,7 @@ public class FormularioController {
 
                 get("/queue", ctx -> {
                     Map<String, Object> contexto = new HashMap<>();
-                    contexto.put("admin", true);
+                    contexto.put("admin", ((Usuario) ctx.sessionAttribute("user")).getAdmin());
                     contexto.put("user", ctx.sessionAttribute("user"));
                     contexto.put("titulo", "Formularios en queue");
                     ctx.render("/publico/templates/listarformularios.ftl", contexto);
@@ -99,7 +99,7 @@ public class FormularioController {
                     List<Registro> forms = RegistroServices.getInstancia().listar();
                     Map<String, Object> contexto = new HashMap<>();
                     contexto.put("title", "Listado Formularios Registrados Por el Usuario");
-                    contexto.put("admin", true);
+                    contexto.put("admin", ((Usuario) ctx.sessionAttribute("user")).getAdmin());
                     contexto.put("user", ctx.sessionAttribute("user"));
                     contexto.put("formularios", forms);
                     ctx.render("/publico/templates/mapa.ftl", contexto);

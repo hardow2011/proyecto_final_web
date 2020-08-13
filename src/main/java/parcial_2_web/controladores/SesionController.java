@@ -52,7 +52,7 @@ public class SesionController extends BaseControlador {
                 get("/login", ctx -> {
                     Map<String, Object> contexto = new HashMap<>();
                     contexto.put("titulo", "Login");
-                    contexto.put("admin", true);
+                    contexto.put("admin", false);
                     contexto.put("accion", "/login");
                     ctx.render("/publico/templates/login.ftl", contexto);
                 });
