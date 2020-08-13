@@ -34,6 +34,7 @@
     function beforeSubmit() {
     getLocation();
     }
+    
     </script>
     <div class="container">
         <div class="jumbotron">

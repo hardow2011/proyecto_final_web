@@ -65,21 +65,21 @@ public class FormularioController {
                     ctx.render("/publico/templates/formulario.ftl", contexto);
                 });
 
-                post("/crear", ctx -> {
+                // post("/crear", ctx -> {
 
-                    ObjectMapper mapper = new ObjectMapper();
+                //     ObjectMapper mapper = new ObjectMapper();
 
-                    String json = ctx.formParam("listaFormularios");
-                    List<Registro> registros = Arrays.asList(mapper.readValue(json, Registro[].class));
+                //     String json = ctx.formParam("listaFormularios");
+                //     List<Registro> registros = Arrays.asList(mapper.readValue(json, Registro[].class));
 
-                    System.out.println("\n\n\n");
-                    for (Registro registro: registros) {
-                        System.out.println(registro.getNombre() + " " + registro.getNivelEscolar() + " " + registro.getLatitud() + " " + registro.getLongitud());
-                        RegistroServices.getInstancia().crear(registro);
-                    }
+                //     System.out.println("\n\n\n");
+                //     for (Registro registro: registros) {
+                //         System.out.println(registro.getNombre() + " " + registro.getNivelEscolar() + " " + registro.getLatitud() + " " + registro.getLongitud());
+                //         RegistroServices.getInstancia().crear(registro);
+                //     }
 
-                    ctx.redirect("/formulario");
-                });
+                //     ctx.redirect("/formulario");
+                // });
 
                 get("/testlocalstorage", ctx -> {
                     Map<String, Object> contexto = new HashMap<>();
@@ -108,6 +108,31 @@ public class FormularioController {
 
 
             });
+        });
+
+        app.ws("/enviarqueue", ws -> {
+
+            ws.onConnect(ctx -> {
+                System.out.println("Conexión Iniciada - "+ctx.getSessionId());
+            });
+
+            ws.onClose(ctx -> {
+                System.out.println("Conexión Cerrada - "+ctx.getSessionId());
+            });
+
+            ws.onMessage(ctx -> {
+
+                ObjectMapper mapper = new ObjectMapper();
+                String json = ctx.message();
+                List<Registro> registros = Arrays.asList(mapper.readValue(json, Registro[].class));
+
+                for (Registro registro: registros) {
+                    // System.out.println(registro.getNombre() + " " + registro.getNivelEscolar() + " " + registro.getLatitud() + " " + registro.getLongitud());
+                    RegistroServices.getInstancia().crear(registro);
+                }
+                
+            });
+
         });
     }
 }
