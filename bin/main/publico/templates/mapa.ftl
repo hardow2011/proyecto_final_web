@@ -89,21 +89,23 @@
         </div>
         <div class="container jumbotron-fluid">
             <br><h1 class="text-center">${title}</h1><br>
-            <table class="table table-bordered">
-                <thead class="thead-light text-center">
-                <th>Nombre</th>
-                <th>Nivel Escolar</th>
-                </thead>
-                <tbody class="text-center">
-                <#list formularios as formu>
-                    <tr>
-                        <td>${formu.nombre}</td>
-                        <td>${formu.nivelEscolar}</td>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class="thead-light text-center">
+                    <th>Nombre</th>
+                    <th>Nivel Escolar</th>
+                    </thead>
+                    <tbody class="text-center">
+                    <#list formularios as formu>
+                        <tr>
+                            <td>${formu.nombre}</td>
+                            <td>${formu.nivelEscolar}</td>
 
-                    </tr>
-                </#list>
-                </tbody>
-            </table>
+                        </tr>
+                    </#list>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </main>
 

@@ -8,36 +8,38 @@
 
             <a href="/usuarios/crear" class="btn btn-primary">Nuevo Usuario</a>
             <br>
-            <table class="table table-striped">
-                <br>
-                <thead>
-                <tr>
-                    <th scope="col" style="width:25%">ID</th>
-                    <th scope="col" style="width:25%">Username</th>
-                    <th scope="col" style="width:25%">Es admin?</th>
-                    <th scope="col" style="width:25%">Acciones</th>
-                </tr>
-                </thead>
-                <tbody>
-                <#foreach user in lista>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <br>
+                    <thead>
                     <tr>
-                        <td>${user.id}</td>
-                        <td>${user.nombreUsuario}</td>
-                        <td>
-                            <#if user.admin>
-                                Sí
-                            <#else>
-                                No
-                            </#if>
-                        </td>
-                        <td>
-                            <a class="btn btn-secondary btn-sm" href="/usuarios/editar/${user.id}">Editar</a>
-                            <a class="btn btn-danger btn-sm" href="/usuarios/eliminar/${user.id}">Eliminar</a>
-                        </td>
+                        <th scope="col" style="width:25%">ID</th>
+                        <th scope="col" style="width:25%">Username</th>
+                        <th scope="col" style="width:25%">Es admin?</th>
+                        <th scope="col" style="width:25%">Acciones</th>
                     </tr>
-                </#foreach>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    <#foreach user in lista>
+                        <tr>
+                            <td>${user.id}</td>
+                            <td>${user.nombreUsuario}</td>
+                            <td>
+                                <#if user.admin>
+                                    Sí
+                                <#else>
+                                    No
+                                </#if>
+                            </td>
+                            <td>
+                                <a class="btn btn-secondary btn-sm" href="/usuarios/editar/${user.id}">Editar</a>
+                                <a class="btn btn-danger btn-sm" href="/usuarios/eliminar/${user.id}">Eliminar</a>
+                            </td>
+                        </tr>
+                    </#foreach>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </#macro>
