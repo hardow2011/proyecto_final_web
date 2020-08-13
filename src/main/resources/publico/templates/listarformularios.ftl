@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <#include "principal.ftl">
 <#macro page_body>
-    <script src="../js/jquery-3.5.1.js"></script>
     <script>
 
         var listaRegistrosLocales = JSON.parse(localStorage.getItem("listaRegistrosLocales") || "[]");
