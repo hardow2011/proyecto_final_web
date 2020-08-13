@@ -22,6 +22,17 @@
                 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmO0JHOHAXY2C3Ud49KbMSwFf3APep1Ow&callback=initMap&libraries=&v=weekly"
                 defer
         ></script>
+        <script>
+            function onUpdateReady() {
+                window.applicationCache.swapCache();
+            }
+
+            window.applicationCache.addEventListener('updateready', onUpdateReady);
+
+            if (window.applicationCache.status === window.applicationCache.UPDATEREADY) {
+                onUpdateReady();
+            }
+        </script>
         <title>Plantilla Crud Tradicional</title>
         <@page_head/>
     </head>
