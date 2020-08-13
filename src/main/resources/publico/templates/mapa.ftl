@@ -94,13 +94,16 @@
                     <thead class="thead-light text-center">
                     <th>Nombre</th>
                     <th>Nivel Escolar</th>
+                    <th>Longitud</th>
+                    <th>Latitud</th>
                     </thead>
                     <tbody class="text-center">
                     <#list formularios as formu>
                         <tr>
                             <td>${formu.nombre}</td>
                             <td>${formu.nivelEscolar}</td>
-
+                            <td>${formu.longitud}</td>
+                            <td>${formu.latitud}</td>
                         </tr>
                     </#list>
                     </tbody>

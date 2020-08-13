@@ -20,8 +20,9 @@
         <script src="../js/bootstrap.min.js"></script>
         <script
                 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmO0JHOHAXY2C3Ud49KbMSwFf3APep1Ow&callback=initMap&libraries=&v=weekly"
-                defer></script>
-        <title>Parcial 2</title>
+                defer
+        ></script>
+        <title>Plantilla Crud Tradicional</title>
         <@page_head/>
     </head>
     <body>
