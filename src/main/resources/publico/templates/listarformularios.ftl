@@ -51,7 +51,7 @@
         }
 
         function conectar() {
-            webSocket = new WebSocket("wss://" + location.hostname + ":" + location.port + "/enviarqueue");
+            webSocket = new WebSocket("ws://" + location.hostname + ":" + location.port + "/enviarqueue");
 
             //indicando los eventos:
             webSocket.onmessage = function(data){recibirInformacionServidor(data);};
