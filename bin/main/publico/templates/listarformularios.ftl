@@ -81,15 +81,17 @@
 
             <a href="/formulario/crear" class="btn btn-primary">Nuevo Formulario</a>
             <br>
-            <table id="mytable" class="table table-striped">
-                <tr>
-                    <th>Nombre</th>
-                    <th>Nivel Escolar</th>
-                    <th>Latitud</th> 
-                    <th>Longitud</th>
-                    <th></th>
-                </tr>
-            </table>
+            <div class="table-responsive"> 
+                <table id="mytable" class="table table-striped">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Nivel Escolar</th>
+                        <th>Latitud</th> 
+                        <th>Longitud</th>
+                        <th></th>
+                    </tr>
+                </table>
+            </div>
             <form id="formQueue" enctype="application/x-www-form-urlencoded" method="post" action="/formulario/crear" >
                 <input type="hidden" id="inputListaFormularios" name="listaFormularios"/>
             <button id="inputbuttonsubmit" type="button" onclick="beforeSubmit();" class="btn btn-primary">Enviar formularios</button>
