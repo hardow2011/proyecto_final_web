@@ -27,6 +27,7 @@
     localStorage.setItem("listaRegistrosLocales", JSON.stringify(listaRegistrosLocales));
     console.log(listaRegistrosLocales);
 
+    document.getElementById("inputNombrePersona").value = "";
     window.location.reload();
 
     }
