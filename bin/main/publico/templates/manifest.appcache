@@ -12,3 +12,6 @@ CACHE:
 formulario.ftl
 principal.ftl
 listarformularios.ftl
+
+FALLBACK:
+formulario.ftl
