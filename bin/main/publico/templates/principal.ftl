@@ -15,6 +15,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="../css/bootstrap.css">
+        <script src="../js/jquery-3.5.1.js"></script>
+        <script src="../js/popper.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
         <title>Plantilla Crud Tradicional</title>
         <@page_head/>
     </head>
@@ -79,9 +82,6 @@
     <@page_body/>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="../js/jquery-3.5.1.js"></script>
-    <script src="../js/popper.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
     </body>
     </html>
 </#macro>
