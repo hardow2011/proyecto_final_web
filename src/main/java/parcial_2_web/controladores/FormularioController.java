@@ -106,6 +106,13 @@ public class FormularioController {
 
                 });
 
+                get("/eliminar/:idFormulario", ctx -> {
+
+                    int id = Integer.parseInt(ctx.pathParam("idFormulario"));
+                    RegistroServices.getInstancia().eliminar(id);
+                    ctx.redirect("/formulario/mapa");
+
+                });
 
             });
         });

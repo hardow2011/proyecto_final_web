@@ -18,21 +18,6 @@
         <script src="../js/jquery-3.5.1.js"></script>
         <script src="../js/popper.min.js"></script>
         <script src="../js/bootstrap.min.js"></script>
-        <script
-                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmO0JHOHAXY2C3Ud49KbMSwFf3APep1Ow&callback=initMap&libraries=&v=weekly"
-                defer
-        ></script>
-        <script>
-            function onUpdateReady() {
-                window.applicationCache.swapCache();
-            }
-
-            window.applicationCache.addEventListener('updateready', onUpdateReady);
-
-            if (window.applicationCache.status === window.applicationCache.UPDATEREADY) {
-                onUpdateReady();
-            }
-        </script>
         <title>Plantilla Crud Tradicional</title>
         <@page_head/>
     </head>
@@ -57,10 +42,7 @@
                             <#--  <a class="nav-link" href="/templates/listarformularios.ftl">QUEUEPRUEBA</a>  -->
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/formulario/mapa">MAPA</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="formulario/listar">LISTAR FORMULARIOS</a>
+                            <a class="nav-link" href="/formulario/mapa">MAPA/Lista de formularios</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/usuarios/">LISTAR USUARIOS</a>
@@ -73,7 +55,7 @@
                         </li>
                     <#else>
                         <li class="nav-item">
-                            <a class="nav-link" href="/formulario">FORMULARIO</a>
+                            <a class="nav-link" href="/formulario/crear">FORMULARIO</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/formulario/queue">QUEUE</a>
