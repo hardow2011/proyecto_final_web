@@ -13,7 +13,7 @@ formulario.ftl
 principal.ftl
 listarformularios.ftl
 
-NETWORK
+NETWORK:
 *
 
 FALLBACK:

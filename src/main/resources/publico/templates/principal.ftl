@@ -18,7 +18,7 @@
         <script src="../js/jquery-3.5.1.js"></script>
         <script src="../js/popper.min.js"></script>
         <script src="../js/bootstrap.min.js"></script>
-        <title>Plantilla Crud Tradicional</title>
+        <title>Parcial 2</title>
         <@page_head/>
     </head>
     <body>
