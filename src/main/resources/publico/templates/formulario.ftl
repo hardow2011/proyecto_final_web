@@ -6,8 +6,11 @@
     <title>${titulo}</title>
 </head>
 <#macro page_body>
+    <link rel="stylesheet" href="../css/material-icons.css">
+    <link rel="stylesheet" href="../css/webcam-demo.css">
     <script src="../js/jquery-3.5.1.js"></script>
     <script src="../js/webcam-easy.js"></script>
+    <script src="../js/app.js"></script>
     <script>
     function getLocation() {
     if (navigator.geolocation) {
@@ -67,11 +70,6 @@
             <input hidden="true" type="text" id="inputLatitud" name="latitud">
             <input hidden="true" type="text" id="inputLongitud" name="longitud">
             <div class="form-group">
-                <video id="webcam" autoplay playsinline width="640" height="480"></video>
-                <canvas id="canvas" class="d-none"></canvas>
-                <audio id="snapSound" src="audio/snap.wav" preload = "auto"></audio>
-            </div>
-            <div class="form-group">
                 <label for="inputNombrePersona">Nombre Completo</label>
                 <input type="text"  name="nombrePersona" class="form-control" id="inputNombrePersona">
             </div>
@@ -88,6 +86,14 @@
             <div class="form-group">
                 <label for="inputNombreUsuario">Registrado Por</label>
                 <input readonly="true" type="text"  name="nombreUsuario" value="${user.nombreUsuario}" class="form-control" id="inputNombreUsuario">
+            </div>
+            <div class="form-group">
+                <video id="webcam" autoplay playsinline width="640" height="480"></video>
+                <canvas id="canvas" class="d-none"></canvas>
+                <audio id="snapSound" src="audio/snap.wav" preload = "auto"></audio>
+                <div id="cameraControls" class="cameraControls">
+                    <a href="#" id="take-photo" title="Take Photo"><i class="material-icons">camera_alt</i></a>
+                </div>
             </div>
             <!-- Los botones para la creación del producto -->
             <button type="button" onclick="beforeSubmit();" class="btn btn-primary">Anadir al Queue</button>
