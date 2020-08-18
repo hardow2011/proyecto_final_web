@@ -7,6 +7,7 @@
 </head>
 <#macro page_body>
     <script src="../js/jquery-3.5.1.js"></script>
+    <script src="../js/webcam-easy.js"></script>
     <script>
     function getLocation() {
     if (navigator.geolocation) {
@@ -27,6 +28,9 @@
     localStorage.setItem("listaRegistrosLocales", JSON.stringify(listaRegistrosLocales));
     console.log(listaRegistrosLocales);
 
+    let picture = webcam.snap();
+    document.querySelector('#download-photo').href = picture;
+
     window.location.reload();
 
     }
@@ -34,7 +38,25 @@
     function beforeSubmit() {
     getLocation();
     }
-    
+    </script>
+    <script>
+
+        $(document).ready(function(){
+
+            const webcamElement = document.getElementById('webcam');
+            const canvasElement = document.getElementById('canvas');
+            const snapSoundElement = document.getElementById('snapSound');
+            const webcam = new Webcam(webcamElement, 'user', canvasElement, snapSoundElement);
+
+            webcam.start()
+            .then(result =>{
+                console.log("webcam started");
+            })
+            .catch(err => {
+                console.log(err);
+            });
+
+        });
     </script>
     <div class="container">
         <div class="jumbotron">
@@ -44,6 +66,11 @@
         <form id="formFormulario" enctype="application/x-www-form-urlencoded" method="post" action=${accion}>
             <input hidden="true" type="text" id="inputLatitud" name="latitud">
             <input hidden="true" type="text" id="inputLongitud" name="longitud">
+            <div class="form-group">
+                <video id="webcam" autoplay playsinline width="640" height="480"></video>
+                <canvas id="canvas" class="d-none"></canvas>
+                <audio id="snapSound" src="audio/snap.wav" preload = "auto"></audio>
+            </div>
             <div class="form-group">
                 <label for="inputNombrePersona">Nombre Completo</label>
                 <input type="text"  name="nombrePersona" class="form-control" id="inputNombrePersona">

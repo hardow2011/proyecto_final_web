@@ -19,11 +19,11 @@
             </#if>
             <div class="form-group">
                 <label for="nombreForm">Nombre de usuario</label>
-                <input value="<#if user??>${user.nombreUsuario}<#else></#if>" type="text"  name="nombre" class="form-control" id="nombreForm" required>
+                <input type="text"  name="nombre" class="form-control" id="nombreForm" required>
             </div>
             <div class="form-group">
                 <label for="passwordInput">Contraseña</label>
-                <input type="password" value="<#if user??>${user.password}<#else></#if>" id="passwordInput" class="form-control" name="password" required/><br/>
+                <input type="password" id="passwordInput" class="form-control" name="password" required/><br/>
             </div>
             <div class="form-group">
                 <#if user??>

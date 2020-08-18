@@ -1,7 +1,10 @@
 <#include "principal.ftl">
 
 <#macro page_head>
-
+    <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmO0JHOHAXY2C3Ud49KbMSwFf3APep1Ow&callback=initMap&libraries=&v=weekly"
+            defer
+    ></script>
     <style type="text/css">
         /* Always set the map height explicitly to define the size of the div
          * element that contains the map. */
@@ -94,13 +97,20 @@
                     <thead class="thead-light text-center">
                     <th>Nombre</th>
                     <th>Nivel Escolar</th>
+                    <th>Longitud</th>
+                    <th>Latitud</th>
+                    <th></th>
                     </thead>
                     <tbody class="text-center">
                     <#list formularios as formu>
                         <tr>
                             <td>${formu.nombre}</td>
                             <td>${formu.nivelEscolar}</td>
-
+                            <td>${formu.longitud}</td>
+                            <td>${formu.latitud}</td>
+                            <td>
+                                <a class="btn btn-danger btn-sm" href="/formulario/eliminar/${formu.id}">Eliminar</a>
+                            </td>
                         </tr>
                     </#list>
                     </tbody>
