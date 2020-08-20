@@ -3,11 +3,13 @@
 <html lang="en" manifest="/templates/manifest.appcache">
 <#include "principal.ftl">
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${titulo}</title>
 </head>
 <#macro page_body>
     <link rel="stylesheet" href="../css/material-icons.css">
     <link rel="stylesheet" href="../css/webcam-demo.css">
+    <link rel="stylesheet" href="../css/my-style.css">
     <script src="../js/jquery-3.5.1.js"></script>
     <script src="../js/webcam-easy.js"></script>
     <script src="../js/app.js"></script>
@@ -65,7 +67,6 @@
         <div class="jumbotron">
             <h1 class="display-4">${titulo}</h1>
         </div>
-        <!-- El endpoint que estará procesando el formulario será enviado por el controlador      -->
         <form id="formFormulario" enctype="application/x-www-form-urlencoded" method="post" action=${accion}>
             <input hidden="true" type="text" id="inputLatitud" name="latitud">
             <input hidden="true" type="text" id="inputLongitud" name="longitud">
@@ -88,16 +89,21 @@
                 <input readonly="true" type="text"  name="nombreUsuario" value="${user.nombreUsuario}" class="form-control" id="inputNombreUsuario">
             </div>
             <div class="form-group">
-                <video id="webcam" autoplay playsinline width="640" height="480"></video>
+                <video id="webcam" autoplay playsinline width="100" height="100"></video>
                 <canvas id="canvas" class="d-none"></canvas>
-                <audio id="snapSound" src="audio/snap.wav" preload = "auto"></audio>
-                <div id="cameraControls" class="cameraControls">
-                    <a href="#" id="take-photo" title="Take Photo"><i class="material-icons">camera_alt</i></a>
+                <audio id="snapSound" src="../audio/snap.wav" preload = "auto"></audio>
+                <div class="center-text">
+                    <button type="button" onclick="" style="border:none; background:none"><i class="material-icons">camera_alt</i></button>
                 </div>
             </div>
-            <!-- Los botones para la creación del producto -->
-            <button type="button" onclick="beforeSubmit();" class="btn btn-primary">Anadir al Queue</button>
-            <a href="/tarea2/" class="btn btn-primary">Cancelar</a>
+            <div class="last-buttons-div-container">
+                <div class="col-sm-12">
+                    <button type="button" onclick="beforeSubmit();" class="btn btn-primary">Anadir al Queue</button>
+                </div>
+                <div class="col-sm-12">
+                    <a href="/tarea2/" class="btn btn-primary">Cancelar</a>
+                </div>
+            </div>
         </form>
     </div>
 </#macro>

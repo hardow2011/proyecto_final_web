@@ -1,0 +1,20 @@
+.center-text {
+    text-align:center;
+}
+.last-buttons-div-container {
+    width: 100%;
+}
+
+.col-sm-12 {
+    float: left;
+    width: fit-content;
+    margin-bottom: 6px;
+}
+
+@media (max-width: 767px) {
+    .col-sm-12 {
+        width: 100%;
+        text-align:center;
+        margin-bottom: 6px;
+    }
+}
