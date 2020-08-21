@@ -139,6 +139,7 @@ public class FormularioController {
 
                 ObjectMapper mapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
                 String json = ctx.message();
+                System.out.println(json);
                 List<Registro> registros = Arrays.asList(mapper.readValue(json, Registro[].class));
                 List<Foto> fotos = Arrays.asList(mapper.readValue(json, Foto[].class));
 
