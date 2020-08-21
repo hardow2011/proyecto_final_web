@@ -7,7 +7,7 @@ const snapSoundElement = document.getElementById('snapSound');
 const webcam = new Webcam(webcamElement, 'user', canvasElement, snapSoundElement);
 
 $(document).ready(function(){
-    if(localStorage.getItem("fotoAlmacenada") !== null){
+    if(localStorage.getItem("fotoBase64") !== null){
         actualizarFotoAlmacenada();
     }
 });
@@ -80,7 +80,7 @@ function actualizarFotoAlmacenada() {
     let divFotoAlmacenada = document.getElementById("div-foto-almacenada");
     divFotoAlmacenada.innerHTML = ""; 
     var img = document.createElement("img");
-    img.setAttribute("src", localStorage.getItem("fotoAlmacenada"));
+    img.setAttribute("src", localStorage.getItem("fotoBase64"));
     img.setAttribute("height", "215");
     img.setAttribute("width", "270");
     divFotoAlmacenada.appendChild(img);
@@ -90,7 +90,7 @@ function actualizarFotoAlmacenada() {
 $("#take-photo").click(function () {
     beforeTakePhoto();
     let picture = webcam.snap();
-    localStorage.setItem("fotoAlmacenada", picture);
+    localStorage.setItem("fotoBase64", picture);
     // document.querySelector('#download-photo').href = picture;
     actualizarFotoAlmacenada();
     // afterTakePhoto();

@@ -4,13 +4,13 @@ import io.javalin.Javalin;
 import io.javalin.plugin.rendering.JavalinRenderer;
 import io.javalin.plugin.rendering.template.JavalinFreemarker;
 import org.jasypt.util.password.StrongPasswordEncryptor;
-import parcial_2_web.entidades.Usuario;
-import parcial_2_web.entidades.Registro;
-import parcial_2_web.services.RegistroServices;
-import parcial_2_web.services.UsuarioServices;
+import parcial_2_web.entidades.*;
+import parcial_2_web.services.*;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.common.collect.Iterables;
 
 import java.lang.reflect.Array;
 import java.math.BigDecimal;
@@ -66,19 +66,21 @@ public class FormularioController {
                 });
 
                 // post("/crear", ctx -> {
-
-                //     ObjectMapper mapper = new ObjectMapper();
-
-                //     String json = ctx.formParam("listaFormularios");
+                //     ObjectMapper mapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+                //     String json = ctx.formParam("pruebaListaFormularios");
                 //     List<Registro> registros = Arrays.asList(mapper.readValue(json, Registro[].class));
+                //     List<Foto> fotos = Arrays.asList(mapper.readValue(json, Foto[].class));
 
-                //     System.out.println("\n\n\n");
-                //     for (Registro registro: registros) {
-                //         System.out.println(registro.getNombre() + " " + registro.getNivelEscolar() + " " + registro.getLatitud() + " " + registro.getLongitud());
+                //     for(int i = 0; i < registros.size(); i++){
+                //         Registro registro = new Registro(registros.get(i).getNombre(), registros.get(i).getNivelEscolar(), registros.get(i).getLatitud(), registros.get(i).getLongitud());
+                //         registro.setUsuario(UsuarioServices.getInstancia().find(((Usuario) ctx.sessionAttribute("user")).getId()));
                 //         RegistroServices.getInstancia().crear(registro);
+                //         Foto foto = new Foto(fotos.get(i).getFotoBase64(), Iterables.getLast(RegistroServices.getInstancia().listar()));
+                //         FotoServices.getInstancia().crear(foto);
                 //     }
 
                 //     ctx.redirect("/formulario");
+
                 // });
 
                 get("/testlocalstorage", ctx -> {
@@ -129,14 +131,20 @@ public class FormularioController {
 
             ws.onMessage(ctx -> {
 
-                ObjectMapper mapper = new ObjectMapper();
+                ObjectMapper mapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
                 String json = ctx.message();
                 List<Registro> registros = Arrays.asList(mapper.readValue(json, Registro[].class));
+                List<Foto> fotos = Arrays.asList(mapper.readValue(json, Foto[].class));
 
-                for (Registro registro: registros) {
-                    // System.out.println(registro.getNombre() + " " + registro.getNivelEscolar() + " " + registro.getLatitud() + " " + registro.getLongitud());
+                for(int i = 0; i < registros.size(); i++){
+                    Registro registro = new Registro(registros.get(i).getNombre(), registros.get(i).getNivelEscolar(), registros.get(i).getLatitud(), registros.get(i).getLongitud());
+                    registro.setUsuario(UsuarioServices.getInstancia().find(((Usuario) ctx.sessionAttribute("user")).getId()));
                     RegistroServices.getInstancia().crear(registro);
+                    Foto foto = new Foto(fotos.get(i).getFotoBase64(), Iterables.getLast(RegistroServices.getInstancia().listar()));
+                    FotoServices.getInstancia().crear(foto);
                 }
+
+                // ctx.redirect("/formulario");
                 
             });
 

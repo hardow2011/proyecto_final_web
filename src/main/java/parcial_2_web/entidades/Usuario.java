@@ -16,7 +16,7 @@ public class Usuario implements Serializable {
     private String nombreUsuario;
     private String password;
     private boolean admin;
-    @OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "usuario", fetch = FetchType.LAZY)
     private List<Registro> listaRegistros = new ArrayList<>();
 
     public Usuario() {

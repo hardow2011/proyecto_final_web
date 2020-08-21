@@ -26,16 +26,15 @@
     document.getElementById("inputLongitud").value = position.coords.longitude;
     
     var listaRegistrosLocales = JSON.parse(localStorage.getItem("listaRegistrosLocales") || "[]");
-    var registro = {nombre:document.getElementById("inputNombrePersona").value,nivelEscolar:document.getElementById("inputNivelEscolar").value,latitud:document.getElementById("inputLatitud").value,longitud:document.getElementById("inputLongitud").value,usuario:null,fotoAlmacenada:localStorage.getItem("fotoAlmacenada")};
+    var registro = {nombre:document.getElementById("inputNombrePersona").value,nivelEscolar:document.getElementById("inputNivelEscolar").value,latitud:document.getElementById("inputLatitud").value,longitud:document.getElementById("inputLongitud").value,usuario:null,fotoBase64:localStorage.getItem("fotoBase64")};
     listaRegistrosLocales.push(registro);
 
     localStorage.setItem("listaRegistrosLocales", JSON.stringify(listaRegistrosLocales));
-    console.log(listaRegistrosLocales);
 
     let divFotoAlmacenada = document.getElementById("div-foto-almacenada");
     divFotoAlmacenada.innerHTML = ""; 
 
-    localStorage.removeItem("fotoAlmacenada");
+    localStorage.removeItem("fotoBase64");
 
     }
 
