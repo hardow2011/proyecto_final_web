@@ -9,7 +9,7 @@ const webcam = new Webcam(webcamElement, 'user', canvasElement, snapSoundElement
 
 $("#webcam-switch").change(function () {
     if(this.checked){
-        $('.md-modal').addClass('md-show');
+        // $('.md-modal').addClass('md-show');
         webcam.start()
             .then(result =>{
                cameraStarted();
@@ -45,35 +45,50 @@ function displayError(err = ''){
 function cameraStarted(){
     $("#errorMsg").addClass("d-none");
     $('.flash').hide();
-    $("#webcam-caption").html("on");
-    $("#webcam-control").removeClass("webcam-off");
-    $("#webcam-control").addClass("webcam-on");
-    $(".webcam-container").removeClass("d-none");
+    $("#webcam-caption").html("Cámara encendida");
+    // $("#webcam-control").removeClass("webcam-off");
+    // $("#webcam-control").addClass("webcam-on");
+    // $(".webcam-container").removeClass("d-none");
     if( webcam.webcamList.length > 1){
         $("#cameraFlip").removeClass('d-none');
     }
-    $("#wpfront-scroll-top-container").addClass("d-none");
-    window.scrollTo(0, 0); 
-    $('body').css('overflow-y','hidden');
+    // $("#wpfront-scroll-top-container").addClass("d-none");
+    // window.scrollTo(0, 0); 
+    // $('body').css('overflow-y','hidden');
 }
 
 function cameraStopped(){
     $("#errorMsg").addClass("d-none");
-    $("#wpfront-scroll-top-container").removeClass("d-none");
-    $("#webcam-control").removeClass("webcam-on");
-    $("#webcam-control").addClass("webcam-off");
+    // $("#wpfront-scroll-top-container").removeClass("d-none");
+    // $("#webcam-control").removeClass("webcam-on");
+    // $("#webcam-control").addClass("webcam-off");
     $("#cameraFlip").addClass('d-none');
-    $(".webcam-container").addClass("d-none");
-    $("#webcam-caption").html("Click to Start Camera");
-    $('.md-modal').removeClass('md-show');
+    // $(".webcam-container").addClass("d-none");
+    $("#webcam-caption").html("Encender cámara");
+    // $('.md-modal').removeClass('md-show');
 }
 
+function actualizarFotoAlmacenada() {
+    // var img = "<img src=data:image/png;base64,"+localStorage.getItem("fotoAlmacenada"+">";
+    // var img = new Image();
+    // img.src = localStorage.getItem("fotoAlmacenada");
+    let divFotoAlmacenada = document.getElementById("div-foto-almacenada");
+    divFotoAlmacenada.innerHTML = ""; 
+    var img = document.createElement("img");
+    img.setAttribute("src", localStorage.getItem("fotoAlmacenada"));
+    img.setAttribute("height", "215");
+    img.setAttribute("width", "270");
+    divFotoAlmacenada.appendChild(img);
+    // document.getElementById("div-foto-almacenada").appendChild(img);
+}
 
 $("#take-photo").click(function () {
     beforeTakePhoto();
     let picture = webcam.snap();
-    document.querySelector('#download-photo').href = picture;
-    afterTakePhoto();
+    localStorage.setItem("fotoAlmacenada", picture);
+    // document.querySelector('#download-photo').href = picture;
+    actualizarFotoAlmacenada();
+    // afterTakePhoto();
 });
 
 function beforeTakePhoto(){
@@ -82,9 +97,9 @@ function beforeTakePhoto(){
         .animate({opacity: 0.3}, 500) 
         .fadeOut(500)
         .css({'opacity': 0.7});
-    window.scrollTo(0, 0); 
-    $('#webcam-control').addClass('d-none');
-    $('#cameraControls').addClass('d-none');
+    // window.scrollTo(0, 0); 
+    // $('#webcam-control').addClass('d-none');
+    // $('#cameraControls').addClass('d-none');
 }
 
 function afterTakePhoto(){

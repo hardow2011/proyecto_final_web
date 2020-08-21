@@ -216,12 +216,21 @@
  }
 
  @media screen and (min-width: 768px) {
+
     #errorMsg {
         position: fixed;
         top: 32vh;
         left: 20vw;
         padding: 20px;
         z-index: 999999;
+    }
+ }
+
+ @media (max-width: 768px) {
+    #cameraFlip {
+      display:block;
+      margin-top: 10px !important;
+      padding-right: 75px !important;
     }
  }
 
@@ -235,7 +244,7 @@
     background-color: black;
     background-position: center center;
     background-repeat: no-repeat;
-    background-image: url(../images//camera_flip_white.png);
+    background-image: url(../img/camera_flip_white.png);
     background-size: cover;
 }
 
