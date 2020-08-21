@@ -14,7 +14,6 @@ public class Foto implements Serializable{
     @Lob
     private String fotoBase64;
     @OneToOne
-    @JoinColumn(name="REGISTRO_ID")
     private Registro registro;
 
     public Foto() {

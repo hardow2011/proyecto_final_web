@@ -16,6 +16,8 @@ public class Registro {
     private float longitud;
     @ManyToOne
     private Usuario usuario;
+    @OneToOne(cascade = CascadeType.REMOVE, mappedBy="registro")
+    private Foto foto;
 
     public Registro() {
         
@@ -70,6 +72,14 @@ public class Registro {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public Foto getFoto() {
+        return foto;
+    }
+
+    public void setFoto(Foto foto) {
+        this.foto = foto;
     }
 
 }
