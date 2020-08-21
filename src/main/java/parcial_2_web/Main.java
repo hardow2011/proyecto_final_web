@@ -31,7 +31,7 @@ public class Main {
              config.addStaticFiles("/publico");
             //  config.registerPlugin(new RouteOverviewPlugin("/rutas")); //aplicando plugins de las rutas
             //  config.enableCorsForAllOrigins();
-        }).start(9000);
+        }).start(9002);
 
         //Manejadores de rutas
         new FormularioController(app).aplicarRutas();
