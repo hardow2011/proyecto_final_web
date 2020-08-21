@@ -65,24 +65,24 @@ public class FormularioController {
                     ctx.render("/publico/templates/formulario.ftl", contexto);
                 });
 
-                post("/crear", ctx -> {
-                    ObjectMapper mapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-                    String json = ctx.formParam("pruebaListaFormularios");
-                    List<Registro> registros = Arrays.asList(mapper.readValue(json, Registro[].class));
-                    List<Foto> fotos = Arrays.asList(mapper.readValue(json, Foto[].class));
+                // post("/crear", ctx -> {
+                //     ObjectMapper mapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+                //     String json = ctx.formParam("pruebaListaFormularios");
+                //     List<Registro> registros = Arrays.asList(mapper.readValue(json, Registro[].class));
+                //     List<Foto> fotos = Arrays.asList(mapper.readValue(json, Foto[].class));
 
-                    for(int i = 0; i < registros.size(); i++){
-                        Registro registro = new Registro(registros.get(i).getNombre(), registros.get(i).getNivelEscolar(), registros.get(i).getLatitud(), registros.get(i).getLongitud());
-                        registro.setUsuario(UsuarioServices.getInstancia().find(((Usuario) ctx.sessionAttribute("user")).getId()));
-                        RegistroServices.getInstancia().crear(registro);
-                        Foto foto = new Foto(fotos.get(i).getFotoBase64(), Iterables.getLast(RegistroServices.getInstancia().listar()));
-                        FotoServices.getInstancia().crear(foto);
-                        System.out.println(foto.getFotoBase64());
-                    }
+                //     for(int i = 0; i < registros.size(); i++){
+                //         Registro registro = new Registro(registros.get(i).getNombre(), registros.get(i).getNivelEscolar(), registros.get(i).getLatitud(), registros.get(i).getLongitud());
+                //         registro.setUsuario(UsuarioServices.getInstancia().find(((Usuario) ctx.sessionAttribute("user")).getId()));
+                //         RegistroServices.getInstancia().crear(registro);
+                //         Foto foto = new Foto(fotos.get(i).getFotoBase64(), Iterables.getLast(RegistroServices.getInstancia().listar()));
+                //         FotoServices.getInstancia().crear(foto);
+                //         System.out.println(foto.getFotoBase64());
+                //     }
 
-                    ctx.redirect("/formulario");
+                //     ctx.redirect("/formulario");
 
-                });
+                // });
 
                 get("/testlocalstorage", ctx -> {
                     Map<String, Object> contexto = new HashMap<>();
