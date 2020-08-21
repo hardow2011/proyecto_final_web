@@ -6,6 +6,11 @@ const snapSoundElement = document.getElementById('snapSound');
 
 const webcam = new Webcam(webcamElement, 'user', canvasElement, snapSoundElement);
 
+$(document).ready(function(){
+    if(localStorage.getItem("fotoAlmacenada") !== null){
+        actualizarFotoAlmacenada();
+    }
+});
 
 $("#webcam-switch").change(function () {
     if(this.checked){
