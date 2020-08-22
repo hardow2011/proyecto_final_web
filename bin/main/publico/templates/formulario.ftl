@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="../css/my-style.css">
     <script src="../js/jquery-3.5.1.js"></script>
     <script src="../js/webcam-easy.js"></script>
-    <script src="../js/app.js"></script>
     <script>
     function getLocation() {
     if (navigator.geolocation) {
@@ -27,42 +26,24 @@
     document.getElementById("inputLongitud").value = position.coords.longitude;
     
     var listaRegistrosLocales = JSON.parse(localStorage.getItem("listaRegistrosLocales") || "[]");
-    var registro = {nombre:document.getElementById("inputNombrePersona").value,nivelEscolar:document.getElementById("inputNivelEscolar").value,latitud:document.getElementById("inputLatitud").value,longitud:document.getElementById("inputLongitud").value,usuario:null};
+    var registro = {nombre:document.getElementById("inputNombrePersona").value,nivelEscolar:document.getElementById("inputNivelEscolar").value,latitud:document.getElementById("inputLatitud").value,longitud:document.getElementById("inputLongitud").value,usuario:null,fotoBase64:localStorage.getItem("fotoBase64")};
     listaRegistrosLocales.push(registro);
 
     localStorage.setItem("listaRegistrosLocales", JSON.stringify(listaRegistrosLocales));
-    console.log(listaRegistrosLocales);
 
-    let picture = webcam.snap();
-    document.querySelector('#download-photo').href = picture;
+    let divFotoAlmacenada = document.getElementById("div-foto-almacenada");
+    divFotoAlmacenada.innerHTML = ""; 
 
-    window.location.reload();
+    localStorage.removeItem("fotoBase64");
 
     }
 
     function beforeSubmit() {
     getLocation();
     }
+
     </script>
-    <script>
 
-        $(document).ready(function(){
-
-            const webcamElement = document.getElementById('webcam');
-            const canvasElement = document.getElementById('canvas');
-            const snapSoundElement = document.getElementById('snapSound');
-            const webcam = new Webcam(webcamElement, 'user', canvasElement, snapSoundElement);
-
-            webcam.start()
-            .then(result =>{
-                console.log("webcam started");
-            })
-            .catch(err => {
-                console.log(err);
-            });
-
-        });
-    </script>
     <div class="container">
         <div class="jumbotron">
             <h1 class="display-4">${titulo}</h1>
@@ -89,12 +70,23 @@
                 <input readonly="true" type="text"  name="nombreUsuario" value="${user.nombreUsuario}" class="form-control" id="inputNombreUsuario">
             </div>
             <div class="form-group">
+                <div class="form-control webcam-start center-text" id="webcam-control">
+                    <label class="form-switch">
+                    <input type="checkbox" id="webcam-switch">
+                    <i></i>
+                    <span id="webcam-caption">Encender cámara</span>
+                    </label>
+                    <a id="cameraFlip" class="btn d-none"></a>               
+                </div>                  
                 <video id="webcam" autoplay playsinline width="100" height="100"></video>
                 <canvas id="canvas" class="d-none"></canvas>
                 <audio id="snapSound" src="../audio/snap.wav" preload = "auto"></audio>
                 <div class="center-text">
-                    <button type="button" onclick="" style="border:none; background:none"><i class="material-icons">camera_alt</i></button>
+                    <a id="take-photo" title="Take Photo"><i class="material-icons btn">camera_alt</i></a>
+                    <#--  <a href="#" id="download-photo" download="selfie.png" target="_blank" title="Save Photo" class="d-none"><i class="material-icons">file_download</i></a>    -->
                 </div>
+            </div>
+            <div id="div-foto-almacenada" class="form-group">
             </div>
             <div class="last-buttons-div-container">
                 <div class="col-sm-12">
@@ -106,6 +98,7 @@
             </div>
         </form>
     </div>
+    <script src="../js/app.js"></script>
 </#macro>
 </html>
 

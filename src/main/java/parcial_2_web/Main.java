@@ -31,7 +31,7 @@ public class Main {
              config.addStaticFiles("/publico");
             //  config.registerPlugin(new RouteOverviewPlugin("/rutas")); //aplicando plugins de las rutas
             //  config.enableCorsForAllOrigins();
-            config.wsFactoryConfig(ws -> { ws.getPolicy().setMaxTextMessageSize(5000000); });
+            config.wsFactoryConfig(ws -> { ws.getPolicy().setMaxTextMessageSize(10000000); });
         }).start(9002);
 
         //Manejadores de rutas

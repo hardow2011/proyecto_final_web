@@ -5,9 +5,16 @@ CACHE MANIFEST
 
 CACHE:
 ../css/bootstrap.css
+../css/my-style.css
+../css/webcam-demo.css
+../css/material-icons.css
+../img/camera_flip_white.png
+../fonts/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2
 ../js/jquery-3.5.1.js
 ../js/popper.min.js
 ../js/bootstrap.min.js
+../js/app.js
+../js/webcam-easy.js
 /formulario/queue
 formulario.ftl
 principal.ftl
