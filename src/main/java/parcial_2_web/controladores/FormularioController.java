@@ -134,7 +134,7 @@ public class FormularioController {
             ws.onClose(ctx -> {
                 System.out.println("Conexión Cerrada - "+ctx.getSessionId());
             });
-
+    
             ws.onMessage(ctx -> {
 
                 ObjectMapper mapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);

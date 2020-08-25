@@ -44,8 +44,8 @@
         function beforeSubmit() {
 
             for(i = 0; i < listaRegistrosLocales.length; i++){
-                console.log("json message length: " + JSON.stringify(listaRegistrosLocales[i]).length);
-                <#--  webSocket.send(JSON.stringify(listaRegistrosLocales[i]));  -->
+                <#--  console.log("json message length: " + JSON.stringify(listaRegistrosLocales[i]).length);  -->
+                webSocket.send(JSON.stringify(listaRegistrosLocales[i]));
             }
 
             localStorage.removeItem("listaRegistrosLocales");
@@ -59,6 +59,7 @@
 
         function conectar() {
             webSocket = new WebSocket("wss://" + location.hostname + ":" + location.port + "/enviarqueue");
+            webSocket.max.text.message.size=1000000;
 
             //indicando los eventos:
             webSocket.onmessage = function(data){recibirInformacionServidor(data);};
