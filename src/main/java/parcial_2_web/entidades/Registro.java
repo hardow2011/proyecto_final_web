@@ -6,6 +6,7 @@ import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Registro {
@@ -17,10 +18,13 @@ public class Registro {
     private String nivelEscolar;
     private float latitud;
     private float longitud;
-    @JsonIgnore
+
     @ManyToOne
+    @JsonBackReference
     private Usuario usuario;
+
     @OneToOne(cascade = CascadeType.REMOVE, mappedBy="registro")
+    @JsonManagedReference
     private Foto foto;
 
     public Registro() {

@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import org.eclipse.jetty.util.thread.strategy.ProduceConsume;
@@ -15,8 +16,9 @@ public class Foto implements Serializable{
     private int id;
     @Lob
     private String fotoBase64;
-    @JsonIgnore
+
     @OneToOne
+    @JsonBackReference
     private Registro registro;
 
     public Foto() {

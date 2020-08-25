@@ -19,7 +19,9 @@ public class Usuario implements Serializable {
     private String nombreUsuario;
     private String password;
     private boolean admin;
+    
     @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "usuario", fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Registro> listaRegistros = new ArrayList<>();
 
     public Usuario() {
