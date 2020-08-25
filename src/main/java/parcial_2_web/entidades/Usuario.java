@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 @Entity
 public class Usuario implements Serializable {
 
@@ -17,6 +19,7 @@ public class Usuario implements Serializable {
     private String password;
     private boolean admin;
     @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "usuario", fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Registro> listaRegistros = new ArrayList<>();
 
     public Usuario() {

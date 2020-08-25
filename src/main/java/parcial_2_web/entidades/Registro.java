@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Registro {
 
@@ -15,6 +17,7 @@ public class Registro {
     private float latitud;
     private float longitud;
     @ManyToOne
+    @JsonBackReference
     private Usuario usuario;
     @OneToOne(cascade = CascadeType.REMOVE, mappedBy="registro")
     private Foto foto;
