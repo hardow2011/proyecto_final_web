@@ -23,6 +23,7 @@ public class Registro {
     private Usuario usuario;
 
     @OneToOne(cascade = CascadeType.REMOVE, mappedBy="registro")
+    @JsonManagedReference
     private Foto foto;
 
     public Registro() {

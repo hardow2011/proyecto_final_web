@@ -18,7 +18,7 @@ public class Foto implements Serializable{
     private String fotoBase64;
 
     @OneToOne
-    @JsonIgnore
+    @JsonBackReference
     private Registro registro;
 
     public Foto() {

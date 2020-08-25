@@ -7,10 +7,14 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
+import javax.transaction.Transactional;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import parcial_2_web.services.UsuarioServices;
 @Entity
+@NamedQuery(name = "Usuario.getRegistrosPorIdUsuario", query = "SELECT r FROM Registro r WHERE r.usuario.id = :idUsuario")
 public class Usuario implements Serializable {
 
     @Id
@@ -62,7 +66,9 @@ public class Usuario implements Serializable {
         this.admin = admin;
     }
 
+    @Transactional
     public List<Registro> getListaRegistros() {
+        listaRegistros = UsuarioServices.getInstancia().getRegistrosPorIdUsuario(id);
         return listaRegistros;
     }
 

@@ -1,8 +1,7 @@
 package parcial_2_web.services;
 
+import parcial_2_web.entidades.Registro;
 import parcial_2_web.entidades.Usuario;
-
-import java.util.ArrayList;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -33,5 +32,11 @@ public class UsuarioServices extends GestionDb<Usuario>{
         List<Usuario> lista = query.getResultList();
         return lista;
     }
+
+	public List<Registro> getRegistrosPorIdUsuario(int idUsuario) {
+        Query query = getEntityManager().createNamedQuery("Usuario.getRegistrosPorIdUsuario", Registro.class);
+        query.setParameter("idUsuario", idUsuario);
+		return query.getResultList();
+	}
 
 }

@@ -22,6 +22,12 @@ public class ApiController extends BaseControlador {
                     get("/", ctx -> {
                         ctx.json(UsuarioServices.getInstancia().listarSinRelaciones());
                     });
+
+                    get("/:idUsuario/formularios", ctx -> {
+                        int idUsuario = Integer.parseInt(ctx.pathParam("idUsuario"));
+
+                        ctx.json(UsuarioServices.getInstancia().find(idUsuario).getListaRegistros());
+                    });
                     
                 });
 
