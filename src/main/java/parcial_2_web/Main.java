@@ -8,6 +8,7 @@ import parcial_2_web.entidades.Usuario;
 import parcial_2_web.services.BootStrapServices;
 import parcial_2_web.services.UsuarioServices;
 import parcial_2_web.controladores.SesionController;
+import parcial_2_web.controladores.ApiController;
 import parcial_2_web.controladores.FormularioController;
 import parcial_2_web.controladores.UsuariosController;
 
@@ -38,5 +39,6 @@ public class Main {
         new FormularioController(app).aplicarRutas();
         new UsuariosController(app).aplicarRutas();
         new SesionController(app).aplicarRutas();
+        new ApiController(app).aplicarRutas();
     }
 }
