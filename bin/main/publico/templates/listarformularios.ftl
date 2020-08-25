@@ -18,14 +18,16 @@
             $("#div1").append(tbl);
             for(var i=0;i<listaRegistrosLocales.length;i++)
             {
-                var tr="<tr>";
+                var tri="<tr>";
                 var td1="<td>"+listaRegistrosLocales[i]["nombre"]+"</td>";
                 var td5="<td>"+listaRegistrosLocales[i]["nivelEscolar"]+"</td>";
                 var td2="<td>"+listaRegistrosLocales[i]["latitud"]+"</td>";
                 var td3="<td>"+listaRegistrosLocales[i]["longitud"]+"</td>";
-                var td4="<td><button class=\"btn btn-danger\" onclick=\"eliminarindice("+i+")\";>Eliminar</button></td></tr>";
+                var td4="<td><button class=\"btn btn-danger\" onclick=\"eliminarindice("+i+")\";>Eliminar</button></td>";
+                var trf="</tr>";
+                var tdfoto="<td colspan=\"2\"><img width=275px; width=270px; src=\""+listaRegistrosLocales[i]["fotoBase64"]+"\" alt=\"No hay foto\"></td>";
 
-            $("#mytable").append(tr+td1+td5+td2+td3+td4); 
+            $("#mytable").append(tri+td1+td5+td2+td3+td4+trf+tri+tdfoto+trf); 
 
             }
 
@@ -40,10 +42,13 @@
         }
 
         function beforeSubmit() {
-            webSocket.send(JSON.stringify(listaRegistrosLocales));
+
+            for(i = 0; i < listaRegistrosLocales.length; i++){
+                webSocket.send(JSON.stringify(listaRegistrosLocales[i]));
+            }
+
             localStorage.removeItem("listaRegistrosLocales");
             window.location.reload();
-
         }
 
         function recibirInformacionServidor(mensaje){

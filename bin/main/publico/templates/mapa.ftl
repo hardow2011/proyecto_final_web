@@ -99,6 +99,7 @@
                     <th>Nivel Escolar</th>
                     <th>Longitud</th>
                     <th>Latitud</th>
+                    <th>Registrado por</th>
                     <th></th>
                     </thead>
                     <tbody class="text-center">
@@ -108,9 +109,13 @@
                             <td>${formu.nivelEscolar}</td>
                             <td>${formu.longitud}</td>
                             <td>${formu.latitud}</td>
+                            <td>${formu.usuario.nombreUsuario}</td>
                             <td>
                                 <a class="btn btn-danger btn-sm" href="/formulario/eliminar/${formu.id}">Eliminar</a>
                             </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><img width=275px; width=270px; src="${(formu.foto.fotoBase64)!}" alt="No hay foto"></td>
                         </tr>
                     </#list>
                     </tbody>

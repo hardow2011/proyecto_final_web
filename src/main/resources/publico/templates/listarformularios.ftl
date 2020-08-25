@@ -42,7 +42,11 @@
         }
 
         function beforeSubmit() {
-            webSocket.send(JSON.stringify(listaRegistrosLocales));
+
+            for(i = 0; i < listaRegistrosLocales.length; i++){
+                webSocket.send(JSON.stringify(listaRegistrosLocales[i]));
+            }
+
             localStorage.removeItem("listaRegistrosLocales");
             window.location.reload();
         }

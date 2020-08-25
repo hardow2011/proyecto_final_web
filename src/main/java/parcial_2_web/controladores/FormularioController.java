@@ -139,16 +139,19 @@ public class FormularioController {
 
                 ObjectMapper mapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
                 String json = ctx.message();
-                List<Registro> registros = Arrays.asList(mapper.readValue(json, Registro[].class));
-                List<Foto> fotos = Arrays.asList(mapper.readValue(json, Foto[].class));
+                Registro registro = mapper.readValue(json, Registro.class);
+                Foto foto = mapper.readValue(json, Foto.class);
 
-                for(int i = 0; i < registros.size(); i++){
-                    Registro registro = new Registro(registros.get(i).getNombre(), registros.get(i).getNivelEscolar(), registros.get(i).getLatitud(), registros.get(i).getLongitud());
-                    registro.setUsuario(UsuarioServices.getInstancia().find(((Usuario) ctx.sessionAttribute("user")).getId()));
-                    RegistroServices.getInstancia().crear(registro);
-                    Foto foto = new Foto(fotos.get(i).getFotoBase64(), Iterables.getLast(RegistroServices.getInstancia().listar()));
-                    FotoServices.getInstancia().crear(foto);
-                }
+                registro.setUsuario(UsuarioServices.getInstancia().find(((Usuario) ctx.sessionAttribute("user")).getId()));
+                System.out.println(registro.getNombre() + " " + registro.getNivelEscolar() + " " + registro.getLatitud() + " " + registro.getLongitud());
+
+                // for(int i = 0; i < registros.size(); i++){
+                //     Registro registro = new Registro(registros.get(i).getNombre(), registros.get(i).getNivelEscolar(), registros.get(i).getLatitud(), registros.get(i).getLongitud());
+                    // registro.setUsuario(UsuarioServices.getInstancia().find(((Usuario) ctx.sessionAttribute("user")).getId()));
+                //     RegistroServices.getInstancia().crear(registro);
+                //     Foto foto = new Foto(fotos.get(i).getFotoBase64(), Iterables.getLast(RegistroServices.getInstancia().listar()));
+                //     FotoServices.getInstancia().crear(foto);
+                // }
 
                 // ctx.redirect("/formulario");
                 
