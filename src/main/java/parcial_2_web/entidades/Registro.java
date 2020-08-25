@@ -7,6 +7,7 @@ import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 public class Registro {
@@ -41,6 +42,7 @@ public class Registro {
         return id;
     }
 
+    @JsonProperty("name")
     public String getNombre() {
         return nombre;
     }
@@ -49,6 +51,7 @@ public class Registro {
         this.nombre = nombre;
     }
 
+    @JsonProperty("educationLevel")
     public String getNivelEscolar() {
         return nivelEscolar;
     }
@@ -57,6 +60,7 @@ public class Registro {
         this.nivelEscolar = nivelEscolar;
     }
 
+    @JsonProperty("latitude")
     public float getLatitud() {
         return latitud;
     }
@@ -65,6 +69,7 @@ public class Registro {
         this.latitud = latitud;
     }
 
+    @JsonProperty("longitude")
     public float getLongitud() {
         return longitud;
     }
@@ -73,6 +78,7 @@ public class Registro {
         this.longitud = longitud;
     }
 
+    @JsonProperty("user")
     public Usuario getUsuario() {
         return usuario;
     }

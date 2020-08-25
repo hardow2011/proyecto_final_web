@@ -28,6 +28,12 @@ public class ApiController extends BaseControlador {
 
                         ctx.json(UsuarioServices.getInstancia().find(idUsuario).getListaRegistros());
                     });
+
+                    post("/", ctx -> {
+                        System.out.println("\n\n\n");
+                        System.out.println(ctx.body());
+                        System.out.println("\n\n\n");
+                    });
                     
                 });
 
