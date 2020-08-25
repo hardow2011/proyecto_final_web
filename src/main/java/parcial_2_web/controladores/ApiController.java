@@ -20,7 +20,7 @@ public class ApiController extends BaseControlador {
                 path("/usuarios", () -> {
 
                     get("/", ctx -> {
-                        ctx.json(UsuarioServices.getInstancia().listarSinRelaciones());
+                        ctx.json(UsuarioServices.getInstancia().listar());
                     });
                     
                 });
