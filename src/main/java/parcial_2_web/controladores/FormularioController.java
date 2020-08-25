@@ -142,8 +142,10 @@ public class FormularioController {
                 Registro registro = mapper.readValue(json, Registro.class);
                 Foto foto = mapper.readValue(json, Foto.class);
 
+                System.out.println("\n\n\n");
                 registro.setUsuario(UsuarioServices.getInstancia().find(((Usuario) ctx.sessionAttribute("user")).getId()));
                 System.out.println(registro.getNombre() + " " + registro.getNivelEscolar() + " " + registro.getLatitud() + " " + registro.getLongitud());
+                System.out.println("\n\n\n");
 
                 // for(int i = 0; i < registros.size(); i++){
                 //     Registro registro = new Registro(registros.get(i).getNombre(), registros.get(i).getNivelEscolar(), registros.get(i).getLatitud(), registros.get(i).getLongitud());
