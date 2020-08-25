@@ -21,7 +21,7 @@ public class Usuario implements Serializable {
     private boolean admin;
     
     @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "usuario", fetch = FetchType.LAZY)
-    @JsonManagedReference
+    @JsonIgnore
     private List<Registro> listaRegistros = new ArrayList<>();
 
     public Usuario() {

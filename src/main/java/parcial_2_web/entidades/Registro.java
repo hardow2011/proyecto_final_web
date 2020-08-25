@@ -20,11 +20,9 @@ public class Registro {
     private float longitud;
 
     @ManyToOne
-    @JsonBackReference
     private Usuario usuario;
 
     @OneToOne(cascade = CascadeType.REMOVE, mappedBy="registro")
-    @JsonManagedReference
     private Foto foto;
 
     public Registro() {
