@@ -55,7 +55,6 @@
     }
 
     function beforeSubmit() {
-    getLocation();
     }
 
     </script>

@@ -47,6 +47,7 @@ public class Registro {
         return nombre;
     }
 
+    @JsonProperty("nombre")
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -56,6 +57,7 @@ public class Registro {
         return nivelEscolar;
     }
 
+    @JsonProperty("nivelEscolar")
     public void setNivelEscolar(String nivelEscolar) {
         this.nivelEscolar = nivelEscolar;
     }
@@ -65,6 +67,7 @@ public class Registro {
         return latitud;
     }
 
+    @JsonProperty("latitud")
     public void setLatitud(float latitud) {
         this.latitud = latitud;
     }
@@ -74,6 +77,7 @@ public class Registro {
         return longitud;
     }
 
+    @JsonProperty("longitud")
     public void setLongitud(float longitud) {
         this.longitud = longitud;
     }
