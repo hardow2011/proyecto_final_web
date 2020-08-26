@@ -37,7 +37,7 @@
     document.getElementById("inputLongitud").value = position.coords.longitude;
     
     var listaRegistrosLocales = JSON.parse(localStorage.getItem("listaRegistrosLocales") || "[]");
-    var registro = {nombre:document.getElementById("inputNombrePersona").value,nivelEscolar:document.getElementById("inputNivelEscolar").value,latitud:document.getElementById("inputLatitud").value,longitud:document.getElementById("inputLongitud").value,usuario:null,fotoBase64:localStorage.getItem("fotoBase64")};
+    var registro = {name:document.getElementById("inputNombrePersona").value,educationLevel:document.getElementById("inputNivelEscolar").value,latitude:document.getElementById("inputLatitud").value,longitude:document.getElementById("inputLongitud").value,usuario:null,fotoBase64:localStorage.getItem("fotoBase64")};
     listaRegistrosLocales.push(registro);
 
     localStorage.setItem("listaRegistrosLocales", JSON.stringify(listaRegistrosLocales));

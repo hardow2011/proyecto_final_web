@@ -19,10 +19,10 @@
             for(var i=0;i<listaRegistrosLocales.length;i++)
             {
                 var tri="<tr>";
-                var td1="<td>"+listaRegistrosLocales[i]["nombre"]+"</td>";
-                var td5="<td>"+listaRegistrosLocales[i]["nivelEscolar"]+"</td>";
-                var td2="<td>"+listaRegistrosLocales[i]["latitud"]+"</td>";
-                var td3="<td>"+listaRegistrosLocales[i]["longitud"]+"</td>";
+                var td1="<td>"+listaRegistrosLocales[i]["name"]+"</td>";
+                var td5="<td>"+listaRegistrosLocales[i]["educationLevel"]+"</td>";
+                var td2="<td>"+listaRegistrosLocales[i]["latitude"]+"</td>";
+                var td3="<td>"+listaRegistrosLocales[i]["longitude"]+"</td>";
                 var td4="<td><button class=\"btn btn-danger\" onclick=\"eliminarindice("+i+")\";>Eliminar</button></td>";
                 var trf="</tr>";
                 var tdfoto="<td colspan=\"2\"><img width=275px; width=270px; src=\""+listaRegistrosLocales[i]["fotoBase64"]+"\" alt=\"No hay foto\"></td>";
