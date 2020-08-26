@@ -97,8 +97,8 @@
                     <thead class="thead-light text-center">
                     <th>Nombre</th>
                     <th>Nivel Escolar</th>
-                    <th>Longitud</th>
                     <th>Latitud</th>
+                    <th>Longitud</th>
                     <th>Registrado por</th>
                     <th></th>
                     </thead>
@@ -107,8 +107,8 @@
                         <tr>
                             <td>${formu.nombre}</td>
                             <td>${formu.nivelEscolar}</td>
-                            <td>${formu.longitud}</td>
                             <td>${formu.latitud}</td>
+                            <td>${formu.longitud}</td>
                             <td>${formu.usuario.nombreUsuario}</td>
                             <td>
                                 <a class="btn btn-danger btn-sm" href="/formulario/eliminar/${formu.id}">Eliminar</a>
