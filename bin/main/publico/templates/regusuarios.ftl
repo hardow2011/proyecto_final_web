@@ -11,12 +11,6 @@
         </div>
         <!-- El endpoint que estará procesando el formulario será enviado por el controlador      -->
         <form enctype="application/x-www-form-urlencoded" method="post" action=${accion} >
-            <#if user??>
-                <div class="form-group">
-                    <label for="idInput">ID</label>
-                    <input readonly="true" value="${user.id}" type="text" name="idUsuario" id="idInput" class="form-control">
-                </div>
-            </#if>
             <div class="form-group">
                 <label for="nombreForm">Nombre de usuario</label>
                 <input type="text"  name="nombre" class="form-control" id="nombreForm" required>

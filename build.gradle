@@ -54,6 +54,9 @@ dependencies {
     compile 'org.hibernate:hibernate-entitymanager:5.4.17.Final'
     //Procesamiento JSON.
     compile "com.fasterxml.jackson.core:jackson-databind:2.10.1"
+    // https://mvnrepository.com/artifact/org.json/json
+    compile group: 'org.json', name: 'json', version: '20200518'
+
 }
 
 shadowJar{

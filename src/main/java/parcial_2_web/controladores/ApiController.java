@@ -10,6 +10,9 @@ import static io.javalin.apibuilder.ApiBuilder.*;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class ApiController extends BaseControlador {
 
     public ApiController(Javalin app) {
@@ -40,8 +43,10 @@ public class ApiController extends BaseControlador {
 
                         ObjectMapper mapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
+                        JSONObject jsonObject = new JSONObject(ctx.body());
+
                         Registro registro = mapper.readValue(ctx.body(), Registro.class);
-                        System.out.println(registro.getNombre()+" "+registro.getNivelEscolar()+" "+registro.getLatitud()+" "+registro.getLongitud());
+                        System.out.println(registro.getNombre()+" "+registro.getNivelEscolar()+" "+registro.getLatitud()+" "+registro.getLongitud()+""+jsonObject.getString("user_id"));
                         System.out.println("\n\n\n");
 
                     });
