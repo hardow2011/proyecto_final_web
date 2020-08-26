@@ -46,7 +46,7 @@ public class ApiController extends BaseControlador {
                         JSONObject jsonObject = new JSONObject(ctx.body());
 
                         Registro registro = mapper.readValue(ctx.body(), Registro.class);
-                        System.out.println(registro.getNombre()+" "+registro.getNivelEscolar()+" "+registro.getLatitud()+" "+registro.getLongitud()+""+jsonObject.getString("user_id"));
+                        System.out.println(registro.getNombre()+" "+registro.getNivelEscolar()+" "+registro.getLatitud()+" "+registro.getLongitud()+""+jsonObject.getInt("user_id"));
                         System.out.println("\n\n\n");
 
                     });
