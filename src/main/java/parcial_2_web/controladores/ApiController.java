@@ -2,6 +2,7 @@ package parcial_2_web.controladores;
 
 import io.javalin.Javalin;
 import parcial_2_web.entidades.Registro;
+import parcial_2_web.services.RegistroServices;
 import parcial_2_web.services.UsuarioServices;
 import parcial_2_web.util.BaseControlador;
 
@@ -46,7 +47,11 @@ public class ApiController extends BaseControlador {
                         JSONObject jsonObject = new JSONObject(ctx.body());
 
                         Registro registro = mapper.readValue(ctx.body(), Registro.class);
-                        System.out.println(registro.getNombre()+" "+registro.getNivelEscolar()+" "+registro.getLatitud()+" "+registro.getLongitud()+""+jsonObject.getInt("user_id"));
+                        System.out.println(registro.getNombre()+" "+registro.getNivelEscolar()+" "+registro.getLatitud()+" "+registro.getLongitud()+" "+jsonObject.getInt("user_id"));
+                        registro.setUsuario(UsuarioServices.getInstancia().find(jsonObject.getInt("user_id")));
+
+                        RegistroServices.getInstancia().editar(registro);
+                        
                         System.out.println("\n\n\n");
 
                     });
