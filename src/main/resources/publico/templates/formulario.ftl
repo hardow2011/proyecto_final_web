@@ -33,6 +33,7 @@
 
     let divFotoAlmacenada = document.getElementById("div-foto-almacenada");
     divFotoAlmacenada.innerHTML = ""; 
+    document.getElementById("inputNombrePersona").value = ""
 
     localStorage.removeItem("fotoBase64");
 

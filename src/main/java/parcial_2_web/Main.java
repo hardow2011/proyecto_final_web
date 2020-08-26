@@ -7,10 +7,7 @@ import io.javalin.Javalin;
 import parcial_2_web.entidades.Usuario;
 import parcial_2_web.services.BootStrapServices;
 import parcial_2_web.services.UsuarioServices;
-import parcial_2_web.controladores.SesionController;
-import parcial_2_web.controladores.ApiController;
-import parcial_2_web.controladores.FormularioController;
-import parcial_2_web.controladores.UsuariosController;
+import parcial_2_web.controladores.*;
 
 import io.javalin.core.util.RouteOverviewPlugin;
 
@@ -33,12 +30,15 @@ public class Main {
             //  config.registerPlugin(new RouteOverviewPlugin("/rutas")); //aplicando plugins de las rutas
             //  config.enableCorsForAllOrigins();
             config.wsFactoryConfig(ws -> { ws.getPolicy().setMaxTextMessageSize(10000000); });
-        }).start(9002);
+        });
 
         //Manejadores de rutas
         new FormularioController(app).aplicarRutas();
         new UsuariosController(app).aplicarRutas();
         new SesionController(app).aplicarRutas();
         new ApiController(app).aplicarRutas();
+        new SoapController(app).aplicarRutas();
+
+        app.start(9002);
     }
 }
