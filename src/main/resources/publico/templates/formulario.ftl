@@ -13,6 +13,17 @@
     <script src="../js/jquery-3.5.1.js"></script>
     <script src="../js/webcam-easy.js"></script>
     <script>
+        $(document).ready(function(){
+            document.getElementById("div-boton-eliminar-foto-almacenada").style.visibility = 'hidden';
+        });
+        function eliminarFotoAlmacenada(){
+            localStorage.removeItem("fotoBase64");
+            let divFotoAlmacenada = document.getElementById("div-foto-almacenada");
+            divFotoAlmacenada.innerHTML = ""; 
+            document.getElementById("div-boton-eliminar-foto-almacenada").style.visibility = 'hidden';
+        }
+    </script>
+    <script>
     function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
@@ -36,6 +47,10 @@
     document.getElementById("inputNombrePersona").value = ""
 
     localStorage.removeItem("fotoBase64");
+    console.log(localStorage.getItem("fotoBase64") === null);
+    console.log(localStorage.getItem("fotoBase64") === 'null');
+    console.log(localStorage.getItem("fotoBase64"));
+    document.getElementById("div-boton-eliminar-foto-almacenada").style.visibility = 'hidden';
 
     }
 
@@ -87,7 +102,10 @@
                     <#--  <a href="#" id="download-photo" download="selfie.png" target="_blank" title="Save Photo" class="d-none"><i class="material-icons">file_download</i></a>    -->
                 </div>
             </div>
-            <div id="div-foto-almacenada" class="form-group">
+            <div id="div-foto-almacenada" class="center-text">
+            </div>
+            <div id="div-boton-eliminar-foto-almacenada" class="center-text" style="margin-bottom:15px">
+                <button type="button" onclick="eliminarFotoAlmacenada();" class="btn btn-danger">Eliminar foto</button>
             </div>
             <div class="last-buttons-div-container">
                 <div class="col-sm-12">

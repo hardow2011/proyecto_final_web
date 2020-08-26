@@ -90,7 +90,8 @@ function actualizarFotoAlmacenada() {
 $("#take-photo").click(function () {
     beforeTakePhoto();
     let picture = webcam.snap();
-    localStorage.setItem("fotoBase64", picture);
+    localStorage.setItem("fotoBase64", picture)
+    document.getElementById("div-boton-eliminar-foto-almacenada").style.visibility = 'visible';
     // document.querySelector('#download-photo').href = picture;
     actualizarFotoAlmacenada();
     // afterTakePhoto();
